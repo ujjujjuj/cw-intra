@@ -40,6 +40,7 @@ nav{
 .navText{
     font-family: joker;
     font-size: 1.3em;
+    cursor: pointer;
 }
 nav a{
     font-size: 1.5em;
