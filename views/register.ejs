@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/register.css">
+        <link rel="icon" href="/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function eyeToggle() {
+                const x = document.getElementsByName("password")[0];
+                const eye = document.getElementsByClassName("eye");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                x.focus();
+            }
+            function onSubmit(token) {
+                if(document.getElementsByName("name")[0].value.length < 6){
+                    alert("Please enter a name!");
+                    return
+                }
+                if(document.getElementsByName("username")[0].value.length < 6){
+                    alert("Username should be greater than 6 characters!");
+                    return
+                }
+                if(document.getElementsByName("password")[0].value.length < 6){
+                    alert("Password should be greater than 6 characters!");
+                    return
+                }
+                if(document.getElementsByName("email")[0].value.length < 6){
+                    alert("Please enter an email address!");
+                    return
+                }
+                document.getElementById("form").submit();
+            }           
+          </script>
+    </head>
+    <body>
+        <nav>
+            <span class="navText">CW</span>
+            <a href = "/techathlon/login">Login</a>
+        </nav>
+        <div class = "Container">
+            <form action = "/techathlon/register" method="POST" id="form">
+                <span class = "head">Techathlon</span>
+                <input type="text" placeholder="Name" name="name" autocomplete="off">
+                <div id = "usernameDiv">
+                    <% if(locals.error.includes("username")){%>   
+                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="none"><br>
+                        <span class = "error">Username already exists!</span>
+                    <%}else{%>
+                        <input type="text" placeholder="Username" name="username" autocomplete="none">
+                    <%} %>
+                </div>
+                <div id = "emailDiv">
+                    <% if(locals.error.includes("email")){%>   
+                        <input type="email" class = "errorInput" placeholder="Email" name="email" autocomplete="none"><br>
+                        <span class = "error">Email already exists!</span>
+                    <%}else{%>
+                        <input type="email" placeholder="Email" name="email" autocomplete="off">
+                    <%} %>
+                </div>
+                <div id = "passwordDiv">
+                    <img src="/images/eye.png" id = "eye" onmousedown="eyeToggle()">
+                    <input type="password" placeholder = "Password" name = "password" autocomplete="none"> 
+                </div>
+                <span class = "text">Are you a student of DPS Vasant Kunj?</span>
+                <div class = "radioContainer">
+                    <label>
+                        <input type="radio" name="isVK" value="Yes" checked>
+                        <span class="circle"></span>
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="isVK" value="No">
+                        <span class="circle"></span>
+                        No
+                    </label>
+                </div>
+                <button class="g-recaptcha" data-sitekey="6LdR_QAVAAAAAIn6C5h4kBI64Vgd_MXvhhMcLbQw" data-callback='onSubmit' data-action='submit' data-callback='onSubmit'>Register</button>
+                <% if(locals.error.includes("auth")){%>   
+                    <span class = "error">Please try again later</span>
+                <%} %>
+            </form>
+            <img id = "banner" src = "/images/big.png">
+        </div>
+    </body>
+</html>

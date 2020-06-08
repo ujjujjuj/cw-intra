@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <% if(locals.extra.title){ %>
+        <title><%= extra.title %></title>
+        <% }else{ %>
+        <title>Play</title>
+        <% } %>
+        
+    </head>
+    <body>
+
+        <div class="container">
+            <span id = "title"><%= title %></span>
+            <span id = "content"><%= content  %></span>
+            
+            <% if(locals.extra.image){ %>
+                <a href=<%= extra.image %> download>
+                    <img src=<%= extra.image %> alt="W3Schools">
+                </a>
+            <% } %>
+
+            <form action = "/play" method="POST">
+                <input type="text" placeholder="Answer" name="answer" autocomplete="off">
+                <input type="submit">
+            </form>
+            
+        </div>
+
+        <% if(locals.extra.comment){ %>
+        <!--
+            <%= extra.comment %>
+        -->
+        <% } %>
+    </body>
+</html>

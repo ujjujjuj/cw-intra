@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaderboard</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Rank</th><th>Username</th><th>Level</th>
+            </tr>
+            <% for (let i = 0; i < leaderboard.length; i++) { %>
+            <tr>
+                <td><%= leaderboard[i].rank %></td>
+                <td><%= leaderboard[i].username %></td>
+                <td><%= leaderboard[i].level %></td>
+            </tr>    
+            <% } %>
+        </table>
+    </body>
+</html>

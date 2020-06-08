@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Logs</title>
+        <link rel="stylesheet" type="text/css" href="/css/log.css">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Answer</th>
+                <th>Level</th>
+            </tr>
+            <% for (let i = 0; i < logs.length; i++) { %>
+            <tr class =<%= logs[i].status %>>
+                <td><%= logs[i].date %></td>
+                <td><%= logs[i].name %></td>
+                <td><%= logs[i].input %></td>
+                <td><%= logs[i].level %></td>
+            </tr>    
+            <% } %>
+        </table> 
+    </body>
+</html>

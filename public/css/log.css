@@ -1,0 +1,40 @@
+@font-face {
+    font-family: regular;
+    src: url(../fonts/SF-Regular.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    color:white;
+    font-family: regular;
+    font-size: 1.2em;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+}
+table,th,td{
+    border: 0.5px solid white;
+}
+th,td{
+    padding:10px;
+}
+th{
+    color: yellow;
+    font-size: 2em;
+    text-align: center;
+    vertical-align:center;
+}
+td{
+    text-align: center;
+    vertical-align:center;
+}
+.Correct{
+    color:lightgreen;
+}

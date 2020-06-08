@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <link rel="icon" href="/favicon.png" />
+        <link rel="stylesheet" href="/css/login.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function eyeToggle() {
+                const x = document.getElementsByName("password")[0];
+                const eye = document.getElementsByClassName("eye");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                x.focus();
+            }
+            function onSubmit(token) {
+                if(document.getElementsByName("username")[0].value.length < 6){
+                    alert("Username should be greater than 6 characters!");
+                    return
+                }
+                if(document.getElementsByName("password")[0].value.length < 6){
+                    alert("Password should be greater than 6 characters!");
+                    return
+                }
+                document.getElementById("form").submit();
+            }           
+          </script>
+    </head>
+    <body>
+        
+        <nav>
+            <span class="navText">CW</span>
+            <a href = "/techathlon/register">Register</a>
+        </nav>
+        <div class = "Container">
+            <form action = "/techathlon/login" method="POST" id = "form">
+                <span class = "head">Techathlon</span>
+                <div id = "usernameDiv">
+                    <% if(locals.error.includes("username")){%>   
+                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="none"><br>
+                        <span class = "error">Username not found!</span>
+                    <%}else{%>
+                        <input type="text" placeholder="Username" name="username" autocomplete="none">
+                    <%} %>
+                </div>
+                <div id = "passwordDiv">
+                    <img src="/images/eye.png" id = "eye" onmousedown="eyeToggle()">
+                    <% if(locals.error.includes("password")){%>
+                        <input class = "errorInput" type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
+                        <span class = "error">Incorrect Password!</span>
+                    <%}else{%>
+                        <input type="password" placeholder = "Password" name = "password" autocomplete="none"> 
+                    <%}%>
+                </div>
+                <button class="g-recaptcha" data-sitekey="6LdR_QAVAAAAAIn6C5h4kBI64Vgd_MXvhhMcLbQw" data-callback='onSubmit' data-action='submit' data-callback='onSubmit'>Login</button>
+                <% if(locals.error.includes("auth")){%>   
+                    <span class = "error">Please try again later</span>
+                <%} %>
+            </form>
+            <img id = "banner" src = "/images/big.png">
+        </div>
+    </body>
+</html>
