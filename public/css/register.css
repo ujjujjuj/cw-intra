@@ -18,8 +18,7 @@
     color: white;
 }
 html{
-    height: 100%;
-    overflow: hidden;
+    scroll-behavior: smooth;
 }
 body{
     background-color: #191919;
@@ -28,6 +27,17 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+::-webkit-scrollbar{
+    width:15px
+}
+
+::-webkit-scrollbar-track{
+    background-color: #303030;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #3DB594;
+    border-radius: 7.5px;
 }
 nav{
     height: 70px;
@@ -51,13 +61,13 @@ nav a{
 .Container{
     height: 100%;
     width:100%;
-    padding-bottom: 70px;
+    margin-bottom: 70px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 form{
-    width:28%;
+    width:30%;
     min-width: 290px;
     height: 100%;
     display: flex;
@@ -69,15 +79,15 @@ form{
     font-size: 3em;
 }
 input{
-    height:45px;
+    height:55px;
     background-color: #191919;
     border: 2px solid #525252;
     border-radius: 1px;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 30px;
     margin-bottom: 5px;
     padding: 0 15px 0 20px;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 input:focus{
     border-color:#285B4D;
@@ -99,8 +109,8 @@ input:focus::placeholder{
 #eye{
     position: absolute;
     height: 16px;
-    top:40px;
-    right:15px;
+    top:50px;
+    right:20px;
     cursor: pointer;
 }
 .text{
@@ -135,7 +145,7 @@ input[type="radio"]:checked + .circle{
 button{
     height:50px;
     width:150px;
-    margin-top: 15px;
+    margin-top: 30px;
     margin-bottom: 5px;
     background-color: #3DB594;
     font-size: 1.2em;
