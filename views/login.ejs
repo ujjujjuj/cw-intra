@@ -6,29 +6,6 @@
         <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="/css/login.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            function eyeToggle() {
-                const x = document.getElementsByName("password")[0];
-                const eye = document.getElementsByClassName("eye");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-                x.focus();
-            }
-            function onSubmit(token) {
-                if(document.getElementsByName("username")[0].value.length < 6){
-                    alert("Username should be greater than 6 characters!");
-                    return
-                }
-                if(document.getElementsByName("password")[0].value.length < 6){
-                    alert("Password should be greater than 6 characters!");
-                    return
-                }
-                document.getElementById("form").submit();
-            }           
-          </script>
     </head>
     <body>
         
@@ -37,18 +14,18 @@
             <a href = "/techathlon/register">Register</a>
         </nav>
         <div class = "Container">
-            <form action = "/techathlon/login" method="POST" id = "form">
+            <form action = "/techathlon/login" method="POST" id = "form" autocomplete="off">
                 <span class = "head">Techathlon</span>
                 <div id = "usernameDiv">
                     <% if(locals.error.includes("username")){%>   
-                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="none"><br>
+                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="new-password"><br>
                         <span class = "error">Username not found!</span>
                     <%}else{%>
-                        <input type="text" placeholder="Username" name="username" autocomplete="none">
+                        <input type="text" placeholder="Username" name="username" autocomplete="off">
                     <%} %>
                 </div>
                 <div id = "passwordDiv">
-                    <img src="/images/eye.png" id = "eye" onmousedown="eyeToggle()">
+                    <img src="/images/eyeClosed.png" id = "eye" onmousedown="mouseDown()" onmouseup="mouseUp()">
                     <% if(locals.error.includes("password")){%>
                         <input class = "errorInput" type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
                         <span class = "error">Incorrect Password!</span>
@@ -63,5 +40,33 @@
             </form>
             <img id = "banner" src = "/images/big.png">
         </div>
+        <script>
+
+            const x = document.getElementsByName("password")[0];
+            const eye = document.getElementById("eye");
+
+            function mouseDown(){
+                eye.src = "/images/eyeOpen.png";
+                x.type="text";
+            }
+
+            function mouseUp(){
+                eye.src = "/images/eyeClosed.png";
+                x.type="password";
+                x.focus()
+            }
+
+            function onSubmit(token) {
+                if(document.getElementsByName("username")[0].value.length < 6){
+                    alert("Username should be greater than 6 characters!");
+                    return
+                }
+                if(document.getElementsByName("password")[0].value.length < 6){
+                    alert("Password should be greater than 6 characters!");
+                    return
+                }
+                document.getElementById("form").submit();
+            }           
+          </script>
     </body>
 </html>

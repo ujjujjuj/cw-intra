@@ -36,7 +36,7 @@ body{
     background-color: #303030;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: #3DB594;
+    background-color: #285B4D;;
     border-radius: 7.5px;
 }
 nav{
@@ -53,13 +53,13 @@ nav{
     cursor: pointer;
 }
 nav a{
-    font-size: 1.5em;
+    font-size: 1.3em;
     color: #3DB594;
     text-decoration: none;
     cursor: pointer;
 }
 .Container{
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 180px);
     width:100%;
     margin-bottom: 80px;
     display: flex;
