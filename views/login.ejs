@@ -25,7 +25,7 @@
                     <%} %>
                 </div>
                 <div id = "passwordDiv">
-                    <img src="/images/eyeClosed.png" id = "eye" onmousedown="mouseDown()" onmouseup="mouseUp()">
+                    <img src="/images/eyeClosed.png" id = "eye" onmousedown="mouseDown()" onmouseup="mouseUp()" ontouchstart = "mouseDown()" ontouchend="mouseUp()">
                     <% if(locals.error.includes("password")){%>
                         <input class = "errorInput" type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
                         <span class = "error">Incorrect Password!</span>
@@ -67,6 +67,6 @@
                 }
                 document.getElementById("form").submit();
             }           
-          </script>
+        </script>
     </body>
 </html>

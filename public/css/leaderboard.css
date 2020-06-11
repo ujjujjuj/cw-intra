@@ -1,0 +1,74 @@
+@font-face {
+    font-family: joker;
+    src: url(/fonts/Jokerman-Regular.ttf);
+}
+@font-face {
+    font-family: regular;
+    src: url(/fonts/SF-Regular.ttf);
+}
+@font-face {
+    font-family: semibold;
+    src: url(/fonts/SF-Semibold.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: regular;
+    color: white;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #191919;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+::-webkit-scrollbar{
+    width:12px
+}
+
+::-webkit-scrollbar-track{
+    display: none;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #363636;;
+}
+.Container{
+    margin-top:25px;
+}
+table{
+    border-collapse: collapse;
+}
+th{
+    background-color: #3DB594;
+    width:20vw;
+    height:45px;
+    font-size: 1.3em;
+    text-align: center;
+}
+th:nth-child(2){
+    width:40vw;
+}
+td{
+    height:50px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+@media only screen and (max-width: 768px) {
+    .Container{
+        padding:0 8vw 0 8vw;
+    }
+    th{
+        font-size: 1.1em;
+        height: 40px;
+    }
+    td{
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,159 @@
+html{
+    overflow-x: hidden;
+}
+nav{
+    width:100%;
+    padding:0 8vw 0 8vw;
+    height:80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+#navLogo{
+    font-family: joker;
+    font-size: 1.3em;
+}
+#navLogo:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.navLinks{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#cross {
+    width: 32px;
+    height: 32px;
+    top:28px;
+    right:28px;
+    opacity: 1;
+    position: fixed;
+    display: none;
+}
+#cross:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+#cross:before, #cross:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 24px;
+    width: 3px;
+    background-color: white;
+}
+#cross:before {
+    transform: rotate(45deg);
+}
+#cross:after {
+    transform: rotate(-45deg);
+}
+.navLinks li{
+    margin-left:30px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+.navLinks li:hover{
+    opacity: 0.6;
+}
+.navLinks li a{
+    text-decoration: none;
+    color: white;
+}
+#selectedLink a{
+    color:#3DB594;
+}
+.navLinks li img{
+    height: 24px;
+}
+#logoutText{
+    display: none;
+}
+#logoutImg{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#hamburger{
+    display: none;
+    flex-direction: column;
+    width:32px;
+    margin:8px;
+}
+#hamburger span{
+    height: 3px;
+    width:100%;
+    background-color: white;
+    border-radius: 2px;
+    margin:2.5px 0 2.5px 0
+}
+
+@media only screen and (max-width: 768px) {
+
+    body{
+        overflow-x: hidden;
+    }
+    
+    #hamburger{
+        display: flex;
+    }
+    .navLinks{
+        position: fixed;
+        right:0;
+        top:0;
+        padding:80px 0 80px 0;
+        height:100vh;
+        width:65vw;
+        max-width: 250px;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #3DB594;
+        transform:translateX(100%);
+        transition: transform 0.35s ease-in;
+    }
+    #selectedLink{
+        background-color:white;
+    }
+    #logoutText{
+        display: flex;
+    }
+    #logoutImg{
+        display:none;
+    }
+    .navLinks li{
+        margin:0;
+        height:50px;
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .navLinks li a{
+        opacity: 0;
+        text-align: center;     
+    }
+    #cross{
+        display: inline;
+    }
+
+}
+
+.nav-active{
+    transform:translateX(0%);
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}

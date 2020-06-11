@@ -2,19 +2,64 @@
 <html>
     <head>
         <title>Leaderboard</title>
+        <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="/css/leaderboard.css">
+        <link rel="icon" href="/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Rank</th><th>Username</th><th>Level</th>
-            </tr>
-            <% for (let i = 0; i < leaderboard.length; i++) { %>
-            <tr>
-                <td><%= leaderboard[i].rank %></td>
-                <td><%= leaderboard[i].username %></td>
-                <td><%= leaderboard[i].level %></td>
-            </tr>    
-            <% } %>
-        </table>
+        <nav>
+            <span id = "navLogo" onclick="window.location = '/'">CW</span>
+            <ul class = "navLinks">
+                <li id = "cross"></li>
+                <li><a href = "/techathlon/">About</a></li>
+                <li><a href = "/techathlon/play">Play</a></li>
+                <li id = "selectedLink"><a href = "#">Leaderboard</a></li>
+                <li><a href = "#">Discord</a></li>
+                <li id = "logoutImg"><img src = "/images/logout.png"></li>
+                <li id = "logoutText"><a href = "/techathlon/logout">Log out</a></li>
+            </ul>
+            <div id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="Container">
+            <table>
+                <tr>
+                    <th>Rank</th><th>Username</th><th>Level</th>
+                </tr>
+                <% for (let i = 0; i < leaderboard.length; i++) { %>
+                <tr>
+                    <td><%= leaderboard[i].rank %></td>
+                    <td><%= leaderboard[i].username %></td>
+                    <td><%= leaderboard[i].level %></td>
+                </tr>    
+                <% } %>
+            </table>
+        </div>
+        <script>
+            const burger = document.getElementById("hamburger");
+            const cross = document.getElementById("cross");
+            const nav = document.querySelector(".navLinks");
+            const navLinks = document.querySelectorAll(".navLinks li a");
+
+            burger.addEventListener("click",() => {
+
+                nav.classList.add("nav-active");
+                navLinks.forEach(function(link,index){
+                    link.style.opacity = 0;
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index/12+0.1}s`;
+                });
+            });
+            cross.addEventListener("click",() => {
+                nav.classList.remove("nav-active");
+                navLinks.forEach(function(link,index){
+                    link.style.animation = "";
+                    link.style.opacity = 1;
+                });
+            });
+        </script>
     </body>
 </html>
