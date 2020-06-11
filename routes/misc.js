@@ -29,6 +29,7 @@ router.get("/leaderboard", async (req,res) => {
 
     //removing _id
     leaderboard = []
+    cnt = 1
     for(let i=0;i < data.length;i++){
         
         //check if user is from VK
@@ -38,7 +39,12 @@ router.get("/leaderboard", async (req,res) => {
         }else{
             username = data[i].username;
         }
-        leaderboard.push({"rank":i+1,"username":username,"level":data[i].level});
+        if(data[i].level==42){
+            leaderboard.unshift({"rank":"hm","username":username,"level":42});
+        }else{
+            leaderboard.push({"rank":cnt,"username":username,"level":data[i].level});
+            cnt += 1
+        }
     } 
 
     res.render(path.join(__dirname + '/../views/leaderboard.ejs'),{"leaderboard":leaderboard});

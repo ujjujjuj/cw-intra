@@ -77,6 +77,7 @@ form{
 .head{
     font-family: semibold;
     font-size: 3em;
+    margin-bottom: 20px;
 }
 input{
     height:55px;
@@ -84,7 +85,7 @@ input{
     border: 2px solid #525252;
     border-radius: 1px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 5px;
     padding: 0 15px 0 20px;
     font-size: 1.1em;
@@ -102,7 +103,7 @@ input:focus::placeholder{
     border-color:#5B3131;
 }
 .errorInput::placeholder{
-    color:#5B3131;
+    color:#854040;
 }
 #passwordDiv{
     position: relative;
@@ -110,7 +111,7 @@ input:focus::placeholder{
 #eye{
     position: absolute;
     height: 16px;
-    top:50px;
+    top:40px;
     right:20px;
     cursor: pointer;
 }
@@ -125,7 +126,8 @@ button{
 }
 .error{
     color: #FF6B6B;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    padding-bottom: 10px;
 }
 #banner{
     width: 420px;

@@ -10,7 +10,7 @@ router.get("/register",(req,res) => {
 
     //check if already logged in
     if(req.cookies['auth']!=null){
-        return res.redirect("/");
+        return res.redirect("/techathlon");
     };
 
     res.render(path.join(__dirname + '/../views/register.ejs'),{error:[]});
@@ -55,16 +55,25 @@ router.post("/register",async (req,res) => {
     }
     let ip = req.ip
 
+    if(username.length < 4 || password.length <8){
+        return res.send("no");
+    }
+
     //check if email/user exists
     const emailExists = await User.findOne({email:req.body.email});
-    const nameExists = await User.findOne({name:req.body.name});
+    const userExists = await User.findOne({username:req.body.username});
 
-    if(nameExists){
+    if(userExists){
 		return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["username"]});
 	}
 	if(emailExists){
 		return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["password"]});
-	}	
+    }
+    
+    const ipAccounts = await User.find({ip:ip});
+    if(ipAccounts.length > 5){
+        return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+    }
 
     //pass hash+salt
     const salt = await bcrypt.genSalt(10);
@@ -97,7 +106,7 @@ router.get("/login",(req,res) => {
 
     //check if already logged in
     if(req.cookies['auth']!=null){
-        return res.redirect("/");
+        return res.redirect("/techathlon");
     };
 
     res.render(path.join(__dirname + '/../views/login.ejs'),{error:[]});
@@ -130,6 +139,9 @@ router.post("/login",async (req,res) => {
     let username = req.body.username;
     let password = req.body.password;
 
+    if(username.length < 4 || password.length <6){
+        return res.send("no");
+    }
 
     //check if username exists
     const user = await User.findOne({username:username});

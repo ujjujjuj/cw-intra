@@ -18,10 +18,11 @@
                 <span class = "head">Techathlon</span>
                 <div id = "usernameDiv">
                     <% if(locals.error.includes("username")){%>   
-                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="new-password"><br>
+                        <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="off"><br>
                         <span class = "error">Username not found!</span>
                     <%}else{%>
-                        <input type="text" placeholder="Username" name="username" autocomplete="off">
+                        <input type="text" placeholder="Username" name="username" autocomplete="off"><br>
+                        <span class = "error">&nbsp;</span>
                     <%} %>
                 </div>
                 <div id = "passwordDiv">
@@ -30,7 +31,8 @@
                         <input class = "errorInput" type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
                         <span class = "error">Incorrect Password!</span>
                     <%}else{%>
-                        <input type="password" placeholder = "Password" name = "password" autocomplete="none"> 
+                        <input type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
+                        <span class = "error">&nbsp;</span>
                     <%}%>
                 </div>
                 <button class="g-recaptcha" data-sitekey="6LdR_QAVAAAAAIn6C5h4kBI64Vgd_MXvhhMcLbQw" data-callback='onSubmit' data-action='submit' data-callback='onSubmit'>Login</button>
@@ -41,32 +43,48 @@
             <img id = "banner" src = "/images/authBanner.png">
         </div>
         <script>
-
-            const x = document.getElementsByName("password")[0];
+            const userBox = document.querySelector("#usernameDiv input");
+            const passBox = document.querySelector("#passwordDiv input");
             const eye = document.getElementById("eye");
+            const userErr = document.querySelector("#usernameDiv .error");
+            const passErr = document.querySelector("#passwordDiv .error");   
 
             function mouseDown(){
                 eye.src = "/images/eyeOpen.png";
-                x.type="text";
+                passBox.type="text";
             }
 
             function mouseUp(){
                 eye.src = "/images/eyeClosed.png";
-                x.type="password";
-                x.focus()
+                passBox.type="password";
+                passBox.focus()
             }
 
             function onSubmit(token) {
-                if(document.getElementsByName("username")[0].value.length < 6){
-                    alert("Username should be greater than 6 characters!");
+                if(userBox.value.length < 4){
+                    userErr.innerHTML = "Username should be greater than 4 characters!"
+                    userBox.classList.add("errorInput");
                     return
                 }
-                if(document.getElementsByName("password")[0].value.length < 6){
-                    alert("Password should be greater than 6 characters!");
+                if(passBox.value.length < 6){
+                    passErr.innerHTML = "Password length should be greater than 6 characters!"
+                    passBox.classList.add("errorInput");
                     return
                 }
                 document.getElementById("form").submit();
-            }           
+            }    
+            passBox.addEventListener("focus",() => {
+                if(passBox.classList.contains("errorInput")){
+                    passBox.classList.remove("errorInput");
+                    passErr.innerHTML = "&nbsp;";
+                }
+            });
+            userBox.addEventListener("focus",() => {
+                if(userBox.classList.contains("errorInput")){
+                    userBox.classList.remove("errorInput");
+                    userErr.innerHTML = "&nbsp;";
+                }
+            });
         </script>
     </body>
 </html>
