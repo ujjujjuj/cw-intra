@@ -10,8 +10,8 @@ const questionSchema = new mongoose.Schema({
 		required:true,
 		max:255
 	},
-	content:{
-		type:String,
+	text:{
+		type:Object,
 		required:true,
 		max:1024
 	},

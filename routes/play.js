@@ -9,21 +9,34 @@ const jwt = require("jsonwebtoken");
 
 const path = require('path');
 
-router.get("/play",(req,res) => {
+router.get("/play",async (req,res) => {
 
     //check if already logged in
     if(req.cookies['auth']==null){
         return res.redirect("/techathlon/login");
     };
 
-    res.render(path.join(__dirname + '/../views/play.ejs'),{
-        title:"Question1",
-        content:"This is the first question",
-        extra:{
-            "comment":"this is a comment",
-            "title":"MMMM"
-        }
+    //get user level
+    let token = req.cookies['auth'];
+    let uid;
+
+    //get id from jwt
+    jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
+        if(err){
+			return res.status(404).send("404 page not found");	
+		}
+        uid = authData;
     });
+    const user = await User.findById(uid);
+    console.log(user.level);
+    if(user.isBanned){
+        return res.send("banned");
+    }
+
+    //get level info
+    const levelInfo = await Question.findOne({"level":user.level});
+    console.log(levelInfo);
+    res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
 
 });
 

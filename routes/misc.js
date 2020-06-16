@@ -2,16 +2,6 @@ const router = require("express").Router();
 const User = require("../models/User.js");
 const path = require('path');
 
-router.get("/rules", (req,res) => {
-
-    //check if already logged in
-    if(req.cookies['auth']==null){
-        return res.redirect("/techathlon/login");
-    };
-
-    res.sendFile(__dirname + '/../views/rules.html');
-});
-
 router.get("/",(req,res) => {
 
     //check if already logged in
@@ -19,7 +9,7 @@ router.get("/",(req,res) => {
         return res.redirect("/techathlon/login");
     };
 
-    res.send("tech landing");
+    res.render(path.join(__dirname + '/../views/about.html'),{"name":"Ujjwal"});
 });
 
 router.get("/leaderboard", async (req,res) => {

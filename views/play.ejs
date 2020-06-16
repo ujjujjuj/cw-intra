@@ -31,15 +31,26 @@
         </nav>
         <div class="container">
             <span id = "title"><%= title %></span>
-            <span id = "content"><%= content  %></span>
-            
-            <% if(locals.extra.image){ %>
-                <a href=<%= extra.image %> download>
-                    <img src=<%= extra.image %> alt="W3Schools">
-                </a>
-            <% } %>
+            <div id = "questionBox">
 
-            <form action = "/play" method="POST">
+                <% for(let i=0;i < text.length;i++){ %>
+                    <span style = <%= "order:" + text[i].order%>><%= text[i].content %></span>
+                <% } %>
+
+                <% if(locals.extra.images){ %>
+                    <% for(let i=0;i < extra.images.length;i++){ %>
+                    <div class = "imageGrid" style = <%= "order:" + extra.images[i].order%>>
+                        <% for(let j=0;j< extra.images[i].src.length;j++){ %>
+                            <img src= <%= extra.images[i].src[j] %> alt="image">
+                        <% } %>
+                    </div>
+                    <% } %>
+                <% } %>
+            </div>
+            <form action = "/techathlon/play" method="POST">
+                <% if(locals.error){ %>
+                    <span class="error">Incorrect answer!</span>
+                <% } %>
                 <input type="text" placeholder="Answer" name="answer" autocomplete="off">
                 <input type="submit">
             </form>
