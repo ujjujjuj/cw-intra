@@ -27,48 +27,57 @@
             <span></span>
         </div>
     </nav>
-    <section class="hello">
-        <div class="info">
-            <h1>Welcome,&nbsp;<span><%= username %></span></h1>    
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit veniam nostrum totam, suscipit asperiores iure aut consequuntur natus fuga eos necessitatibus earum quam dicta nobis ducimus ad quos libero dolorem!</p>
-            <p>The official cryptic hunt hosted by the Code Warriors of DPS Vasant Kunj will begin on X</p>
-            <a href="#rules" class="btn">
-                How to play<i class="fas fa-chevron-right"></i>
-            </a>
-            <a href="/techathlon/play" class="btn om">
-                Play<i class="fas fa-chevron-right"></i>
-            </a>
-        </div>
-        <div class="image">
-            <img src="/images/bhai.png" alt="girl">
-        </div>
-    </section>
-    <section class="rules" id="rules">
-        <div class="head">
-            <h1>Rules</h1>
-            <div class="bruh"></div>
-        </div>
-        <div class="points">
-            <p>The hunt will last for 48 hours from 11:42 PM to 11:42 PM. </p>
-            <p>The answers are not case sensitive and can contain 
-                special characters.</p>
-            <p> A minor typo will result in an incorrect answer, so be doubly 
-                sure of what you enter. For example, if the answer is 
-                "codewarriors" and you enter "code wariors", it will be 
-                considered incorrect.</p>
-            <p>Hints will be posted on the <a href="https://discord.gg/uG6pzB9"><span>discord server</span></a>.</p>
-            <p>Spamming the admins for hints is frowned upon.</p>
-            <p>The use of any unfair means will be dealt with strictly and 
-                you shall be permanently disqualified from participating. </p>
-            <p>There is no restriction on the number of times you can enter an 
-                answer, so feel free to guess, although random answers are 
-                highly unlikely to work.</p>
-            <p>If you feel you’re stuck at any point it’s best to clear your head 
-                and starting thinking from scratch. </p>
-            <p>Refer to the learning resources if you are new to cryptic hunts.</p>
-            <p>Have fun playing and don't panic.</p>
-        </div>
-    </section>
+    <div class = "container">
+        <section class="hello">
+            <div class="info">
+                <h1>Welcome,&nbsp;<span><%= username %></span></h1>    
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit veniam nostrum totam, suscipit asperiores iure aut consequuntur natus fuga eos necessitatibus earum quam dicta nobis ducimus ad quos libero dolorem!</p>
+                <p>The official cryptic hunt hosted by the Code Warriors of DPS Vasant Kunj will begin on X</p>
+                <a href="#rules" class="btn">
+                    How to play<i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="/techathlon/play" class="btn om">
+                    Play<i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="image">
+                <img src="/images/bhai.png" alt="girl">
+            </div>
+        </section>
+        <section class="rules" id="rules">
+            <div class="head">
+                <h1>Rules</h1>
+                <div class="bruh"></div>
+            </div>
+            <div class="points">
+                <ol>
+                    <li>The hunt will last for 48 hours from 11:42 PM to 11:42 PM. </li>
+                    <li>The answers are not case sensitive and can contain 
+                    special characters.</li>
+                    <li> A minor typo will result in an incorrect answer, so be doubly 
+                    sure of what you enter. For example, if the answer is 
+                    "codewarriors" and you enter "code wariors", it will be 
+                    considered incorrect.</li>
+                    <li>Hints will be posted on the <a href="https://discord.gg/uG6pzB9"><span>discord server</span></a>.</li>
+                    <li>Spamming the admins for hints is frowned upon.</li>
+                    <li>The use of any unfair means will be dealt with strictly and 
+                    you shall be permanently disqualified from participating.</li>
+                    <li>There is no restriction on the number of times you can enter an 
+                    answer, so feel free to guess, although random answers are 
+                    highly unlikely to work.</li>
+                    <li>If you feel you’re stuck at any point it’s best to clear your head 
+                    and starting thinking from scratch. </li>
+                    <li>Refer to the learning resources if you are new to cryptic hunts.</li>
+                    <li>Have fun playing and don't panic.</li>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>Made with &lt;3 by Ujjwal Dimri and Ishaan Das.</p>
+        <a href="mailto:kevin@code-warriors.org.com"><p class="ujj">kevin@code-warriors.org</p></a>
+        <a href="https://www.facebook.com/codewarriors"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com/codewarriors42/"><i class="fab fa-instagram"></i></a>
+    </footer>
     <script>
         const burger = document.getElementById("hamburger");
         const cross = document.getElementById("cross");

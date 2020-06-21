@@ -130,7 +130,8 @@ button{
     padding-bottom: 10px;
 }
 #banner{
-    width: 420px;
+    width:30vw;
+    min-width: 400px;
 }
 
 @media only screen and (max-width: 768px) {
