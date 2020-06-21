@@ -33,37 +33,33 @@ body {
     font-family: regular;
     background: #191919;
     color: white;
-    
-}
-.container{
-    margin: 0 auto;
-    padding: 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+.container{
+    margin:30px 0;
+    width:73vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 a {
     color: white;
-    text-decoration: none;
-    
+    text-decoration: none; 
 }
-
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    padding-bottom: 80px;
+    margin-bottom:50px;
 }
 
 .image img {
     width: 300px;
     padding-right: 5px;
 }
-
 .info .btn {
-    
     cursor: pointer;
     display: inline-block;
     border: 0;
@@ -71,29 +67,24 @@ a {
     font-size: 15px;
     color: white;
     background: #3DB594;
-    margin-right: 15px;
-       
+    margin-right: 15px;     
 }
-
 .info .btn:hover {
     background: #2f8f75;
     transition: .5s ease;
 }
-
 .info .gay {
     padding: 15px 33px;
     margin-bottom: 10px;
 }
-
 .info h1 {
     font-size: 35px;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
+    margin-right: 40px;
 }
-
 .info p {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
-
 .buttons {
     padding-top: 20px;
     padding-bottom: 60px;
@@ -102,8 +93,7 @@ a {
     display: grid;
     grid-template-columns: repeat(1,1fr);
     grid-gap: 30px;
-    margin-bottom: 40px;
-    padding-bottom: 50px;
+    margin-bottom: 60px;
 }
 .events div {   
     padding-bottom: 15px;   
@@ -199,9 +189,6 @@ footer i {
     }
 }
 @media only screen and (min-width: 800px) {
-    .container {
-        padding: 20px 100px;    
-    }
     .image img {
         width: 400px;
         padding-right: 0px;
@@ -211,9 +198,6 @@ footer i {
     }
 }
 @media only screen and (min-width: 1100px) {
-    .container {
-         padding: 20px 100px;   
-    }
     .main {
         display: flex;
         flex-direction: row;
@@ -241,9 +225,6 @@ footer i {
     }
 }
 @media only screen and (min-width: 1200px) {
-    .container {
-        padding: 20px 200px;  
-    }
     .image img {
         width: 500px;
         padding-right: 0px;
@@ -252,5 +233,4 @@ footer i {
         grid-template-columns: repeat(3,1fr);
     }
 }
-
 

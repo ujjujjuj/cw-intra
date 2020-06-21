@@ -29,12 +29,12 @@ body {
     color: white;    
 }
 .container{
-    width:90vw;
+    width:73vw;
+    margin-top: 50px;
 }
 .hello {
     display: flex;
     margin: 0 auto;
-    padding: 50px 200px;
     justify-content: center;
     align-items: center;   
 }
@@ -75,8 +75,7 @@ a {
     transition: ease.5s;
 }
 .rules {
-    margin: auto;
-    padding: 50px 250px;
+    margin:50px 0;
 }
 .head {
     color: #3DB594;
