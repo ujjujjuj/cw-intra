@@ -1,15 +1,24 @@
 const router = require("express").Router();
 const User = require("../models/User.js");
 const path = require('path');
+const jwt = require("jsonwebtoken");
 
-router.get("/",(req,res) => {
+router.get("/",async (req,res) => {
 
     //check if already logged in
     if(req.cookies['auth']==null){
-        return res.redirect("/techathlon/login");
+        return res.redirect("/techathlon/register");
     };
-
-    res.render(path.join(__dirname + '/../views/about.html'),{"name":"Ujjwal"});
+    //get username
+    token = req.cookies['auth'];
+    jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
+        if(err){
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
+		}
+        uid = authData;
+    });
+    const user = await User.findOne({_id: uid});
+    res.render(path.join(__dirname + '/../views/about.ejs'),{"username":user.username});
 });
 
 router.get("/leaderboard", async (req,res) => {

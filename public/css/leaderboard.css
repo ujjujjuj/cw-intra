@@ -55,7 +55,7 @@ th{
 th:nth-child(2){
     width:40vw;
 }
-tr:nth-child(even) { 
+tr:nth-child(odd) { 
     background-color: #323232; 
 }
 td{

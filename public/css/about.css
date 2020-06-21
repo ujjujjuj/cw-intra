@@ -10,331 +10,157 @@
     font-family: joker;
     src: url(/fonts/Jokerman-Regular.ttf);
 }
-body {
-    font-family: regular;
-    background: #191919;
-    color: white;    
-}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: regular;
+    background: #191919;
+    color: white;    
+}
 .hello {
     display: flex;
-    
     margin: 0 auto;
-    padding: 200px 250px;
+    padding: 50px 250px;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;   
 }
-
-span {
-    color: #3DB594;
-}
-
 a {
     text-decoration: none;
 }
-
-.hello a {
-    color: #3DB594;
-    text-decoration: none;
-    font-size: 15px;
-    padding-right: 25px;
-    
-}
-
-
-
-img {
+.image img{
     width: 530px;
 }
-
+.hello h1 {
+    padding-bottom: 30px;
+    font-size: 2.5em;
+}
+span {
+    color: #3DB594;
+}
 .hello p {
     padding-right: 100px;
     padding-bottom: 30px;
-    font-size: 15px;
+    font-size: 1em;
+    line-height: 1.3;
 }
-
-.hello h1 {
-    padding-bottom: 30px;
-    font-size: 40px;
+.hello i {
+    padding-left: 5px;
 }
-
+.hello a {
+    display: inline-block;
+    padding-top: 10px;
+    text-transform: uppercase;
+    color: #3DB594;
+    text-decoration: none;
+    font-size: 1em;
+    padding-right: 25px; 
+}
+.hello a:hover i {
+    margin-left: 10px;
+    transition: ease.5s;
+}
 .rules {
     margin: auto;
-    padding: 150px 250px;
+    padding: 50px 250px;
     padding-right: 600px;
-    
 }
-
 .head {
-    
     color: #3DB594;
     padding-bottom: 50px;
     font-size: 25px;
-
 }
-
 .head h1 {
     padding-bottom: 10px;
 }
-
 .bruh {
     background: #3DB594;
     width: 80px;
     height: 7px;
-    
-    
 }
-
 .rules p {
     padding-bottom: 45px;
     font-size: 15px;
 }
 
-.hello a {
-    display: inline-block;
-    padding-top: 10px;
-    
-    text-transform: uppercase;
-    
-    
-}
-
-.hello i {
-    padding-left: 5px;
-}
-
-.hello a:hover i {
-    margin-left: 10px;
-    transition: ease.5s;
-}
-
-html{
-    overflow-x: hidden;
-}
-nav{
-    width:100%;
-    padding:0 8vw 0 8vw;
-    height:80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    font-size: 14px;
-}
-#navLogo{
-    font-family: joker;
-    font-size: 1.3em;
-}
-#navLogo:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
-.navLinks{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#cross {
-    width: 32px;
-    height: 32px;
-    top:28px;
-    right:28px;
-    opacity: 1;
-    position: fixed;
-    display: none;
-}
-#cross:hover {
-    opacity: 0.6;
-    cursor: pointer;
-}
-#cross:before, #cross:after {
-    position: absolute;
-    left: 15px;
-    content: ' ';
-    height: 24px;
-    width: 3px;
-    background-color: white;
-}
-#cross:before {
-    transform: rotate(45deg);
-}
-#cross:after {
-    transform: rotate(-45deg);
-}
-.navLinks li{
-    margin-left:30px;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-}
-.navLinks li:hover{
-    opacity: 0.6;
-}
-.navLinks li a{
-    text-decoration: none;
-    color: white;
-}
-#selectedLink a{
-    color:#3DB594;
-}
-.navLinks li img{
-    height: 24px;
-}
-#logoutText{
-    display: none;
-}
-#logoutImg{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-#hamburger{
-    display: none;
-    flex-direction: column;
-    width:32px;
-    margin:8px;
-}
-#hamburger:hover{
-    opacity: 0.6;
-}
-#hamburger span{
-    height: 3px;
-    width:100%;
-    background-color: white;
-    border-radius: 2px;
-    margin:2.5px 0 2.5px 0
-}
-
 @media only screen and (max-width: 1400px) {
-
-    .rules, .hello {
-        
-        padding: 150px 200px;
-        
-        
+    .rules, .hello { 
+        padding: 50px 200px;             
     }
 }
-    
- 
 @media only screen and (max-width: 1200px) {
-
-    .rules, .hello {
-        
-        padding: 150px 100px;
-        
-        
+    .rules, .hello {   
+        padding: 50px 100px;     
     }
-
     .rules {
         padding-right: 500px;
     }
-
-    img {
+    .image img{
         width: 450px;
     }
-
-  
 }
 @media only screen and (max-width: 1000px) {
-
-    .rules, .hello {
-        
-        padding: 150px 50px;
-        
-        
+    .rules, .hello {    
+        padding: 50px 50px;     
     }
-
     .rules {
         padding-right: 500px;
     }
-
-  
 }
-
 @media only screen and (max-width: 900px) {
-
     *{
         margin: 0;
         padding: 0;
-    }
-    
+    }  
     .hello {
         flex-direction: column;
         text-align: center;
         margin: 0 auto;
-        padding: 200px 20px;
-        
-        
-        
+        padding: 50px 20px;    
     }
-
     .hello p {
         padding: 20px 5px;
     }
-
-    img {
+    .image img{
         padding: 100px 0 0 0 ;
         width: 400px;
     }
-
     .rules {
      padding: 40px;
     }
     .hello a {
         padding-top: 40px;
     }
-
-
-
-  
 }
 @media only screen and (max-width: 768px) {
-
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    
     .hello {
         flex-direction: column;
         text-align: center;
         margin: 0 auto;
-        padding: 100px 20px;
-        
-        
-        
+        padding: 50px 20px;  
     }
-
     .hello p {
         padding: 20px 5px;
     }
-
     img {
         padding: 100px 0 0 0 ;
         width: 300px;
     }
-
     .rules {
      padding: 40px;
     }
     .hello a {
         padding-top: 40px;
     }
-
     .hello h1 {
         font-size: 30px;
     }
-
     .rules h1 {font-size: 30px;}
-
-
-  
 }
     

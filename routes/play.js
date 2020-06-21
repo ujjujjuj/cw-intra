@@ -4,11 +4,15 @@ const Question = require("../models/Question.js");
 const Answer = require("../models/Answer.js");
 const Log = require("../models/Log.js");
 const crypto = require('crypto');
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const path = require('path');
 
+router.get("/play",(req,res) => {
+    return res.send("bhai rukja abhi nahi")
+});
+
+/*
 router.get("/play",async (req,res) => {
 
     //check if already logged in
@@ -23,20 +27,18 @@ router.get("/play",async (req,res) => {
     //get id from jwt
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).send("404 page not found");	
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
 		}
         uid = authData;
     });
     const user = await User.findById(uid);
-    console.log(user.level);
     if(user.isBanned){
         return res.send("banned");
     }
 
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});
-    console.log(levelInfo);
-    res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
+    return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
 
 });
 
@@ -52,18 +54,20 @@ router.post("/play",async (req,res) => {
     //get id from jwt
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).send("404 page not found");	
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
 		}
         uid = authData;
     });
     const user = await User.findOne({_id: uid});
     
-    //hash user ans
-    hashedAns = crypto.createHash('sha256').update(req.body.answer).digest('hex');
+    //normalise and hash user ans
+    let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
+    hashedAns = crypto.createHash('sha256').update(normalisedAns).digest('hex');
 
     //get ans from db
     answer = await Answer.findOne({level:user.level});
 
+    //if answer is incorrect
     if(!(hashedAns == answer.answer)){
         
         //save log
@@ -75,9 +79,13 @@ router.post("/play",async (req,res) => {
         });
         const savedLog = await log.save();
 
-        return res.send("Incorrect");
+        //get level info and send error
+        const levelInfo = await Question.findOne({"level":user.level});
+        levelInfo.error = "ys";
+        return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo);
     }
 
+    //if answer is correct
     const log = new Log({
         username:user.username,
         level:user.level,
@@ -91,8 +99,8 @@ router.post("/play",async (req,res) => {
 
     const savedUser = await user.save();
 
-    res.redirect("/play");
+    res.redirect("/techathlon/play");
 
 });
-
+*/
 module.exports=router;

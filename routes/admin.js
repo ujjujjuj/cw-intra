@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 router.get("/logs/",async (req,res) => {
 
     if(req.cookies['auth']==null){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     };
 
     let token = req.cookies['auth'];
@@ -19,7 +19,7 @@ router.get("/logs/",async (req,res) => {
     //get id from jwt
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).send("404 page not found");	
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
 		}
         uid = authData;
     });
@@ -27,7 +27,7 @@ router.get("/logs/",async (req,res) => {
 
     //check if user isnt admin or not
     if(user.username != process.env.ADMIN_USER){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
 
     //get logs and order them
@@ -52,7 +52,7 @@ router.get("/logs/",async (req,res) => {
 router.get("/logs/:username",async (req,res) => {
 
     if(req.cookies['auth']==null){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     };
 
     let token = req.cookies['auth'];
@@ -61,7 +61,7 @@ router.get("/logs/:username",async (req,res) => {
     //get id from jwt
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).send("404 page not found");
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
 		}
         uid = authData;
     });
@@ -69,7 +69,7 @@ router.get("/logs/:username",async (req,res) => {
 
     //check if user isnt admin or not
     if(user.username != process.env.ADMIN_USER){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
 
     //get logs and order them
@@ -92,7 +92,7 @@ router.get("/logs/:username",async (req,res) => {
 router.get("/info/:username", async (req,res) =>{
 
     if(req.cookies['auth']==null){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     };
 
     let token = req.cookies['auth'];
@@ -101,7 +101,7 @@ router.get("/info/:username", async (req,res) =>{
     //get id from jwt
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).send("404 page not found");
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
 		}
         uid = authData;
     });
@@ -109,7 +109,7 @@ router.get("/info/:username", async (req,res) =>{
 
     //check if user isnt admin or not
     if(Adminuser.username != process.env.ADMIN_USER){
-        return res.status(404).send("404 page not found");
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
 
     let username = req.params.username;
@@ -136,7 +136,7 @@ router.get("/info/:username", async (req,res) =>{
     });
 
 });
-
+/*
 router.get("/addanswer", async (req,res) =>{
 
     const answer = new Answer({
@@ -148,5 +148,5 @@ router.get("/addanswer", async (req,res) =>{
     res.send("adding");
 
 });
-
+*/
 module.exports=router;

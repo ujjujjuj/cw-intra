@@ -11,7 +11,7 @@ dotenv.config();
 //app init + middleware
 app = express();
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -24,11 +24,11 @@ const config = {
   	useNewUrlParser: true
 }
 mongoose.connect(process.env.DB_URL,config,function(){
-		console.log("Connected to db")
+    console.log("Connected to db")
 });
     
 
-// *******routes******
+// *******ROUTES******
 
 // INTRA LANDING
 
@@ -56,7 +56,7 @@ app.use("/techathlon/admin",adminRoute);
 
 //404
 app.get('*', function(req, res){
-    res.status(404).send('404 page not found');
+    res.status(404).sendFile(path.join(__dirname + '/views/404.html'));
 });
 
 //server start

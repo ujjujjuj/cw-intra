@@ -1,0 +1,59 @@
+@font-face {
+    font-family: joker;
+    src: url(/fonts/Jokerman-Regular.ttf);
+}
+@font-face {
+    font-family: regular;
+    src: url(/fonts/SF-Regular.ttf);
+}
+@font-face {
+    font-family: semibold;
+    src: url(/fonts/SF-Semibold.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: regular;
+    background: #191919;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;   
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+    background: #3DB594;   
+}
+
+.btn:hover {
+    background: #2f8f75;
+    transition: .5s ease;
+}
+
+div {
+    position: relative;
+    text-align: center;
+    top: -70%;
+    transform: translateY(70%); 
+}
+
+h1 {
+    font-size: 150px;
+    color: #3DB594;
+}
+
+p {
+    font-size: 20px;
+    padding-bottom: 45px;
+}

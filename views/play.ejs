@@ -41,7 +41,7 @@
                     <% for(let i=0;i < extra.images.length;i++){ %>
                     <div class = "imageGrid" style = <%= "order:" + extra.images[i].order%>>
                         <% for(let j=0;j< extra.images[i].src.length;j++){ %>
-                            <img src= <%= extra.images[i].src[j] %> alt="image">
+                            <img src= <%= "/images/" + extra.images[i].src[j] %> alt="image">
                         <% } %>
                     </div>
                     <% } %>
@@ -50,9 +50,12 @@
             <form action = "/techathlon/play" method="POST">
                 <% if(locals.error){ %>
                     <span class="error">Incorrect answer!</span>
+                    <input type="text" class = "errorInput" placeholder="Answer" name="answer" autocomplete="off" id = "answer">
+                <% } else { %>
+                    <span class="error">&nbsp;</span>
+                    <input type="text" placeholder="Answer" name="answer" autocomplete="off">
                 <% } %>
-                <input type="text" placeholder="Answer" name="answer" autocomplete="off">
-                <input type="submit">
+                <button onclick="answerSubmit()">Submit</button>
             </form>
             
         </div>
@@ -77,6 +80,28 @@
                     link.style.opacity = 1;
                 });
             });
+        </script>
+        <script>
+            const form = document.querySelector("form")
+            const answerBox = document.querySelector("form #answer");
+            const answerError = document.querySelector("form .error");
+            
+            function answerSubmit(){
+                if(answerBox.value.length < 1){
+                    answerError.innerHTML = "Please enter an answer"
+                    answerBox.classList.add("errorInput");
+                    return
+                }
+                document.getElementById("form").submit();
+            }
+
+            answerBox.addEventListener("focus",() => {
+                if(answerBox.classList.contains("errorInput")){
+                    answerBox.classList.remove("errorInput");
+                    answerError.innerHTML = "&nbsp;";
+                }
+            });
+
         </script>
     <% if(locals.extra.comment){ %>
         <!--

@@ -1,43 +1,224 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>CW Intra 2020</title>
-        <link rel="stylesheet" type="text/css" href="/css/index.css">
-    </head>
-    <body>
-        <nav>
-            <span id = logoSpan>
-                Code Warriors
-            </span>
-            <ul id = "navElements">
-                <li><a href = "#">Events</a></li>
-                <li><a href = "#">Submit</a></li>
-                <li><a href = "/techathlon">Techathlon</a></li>
-            </ul>
-        </nav>
-        <div class="Container">
-            <div class="intro">
-                <div class="introText">
-                    <span class="head">
-                        Join the war.
-                    </span>
-                    <span class = "text">
-                        We're the Code Warriors, the computer club of DPS 
-                        Vasant Kunj. We're a team of technology addicts, and 
-                        our skills range from gaming to designing. 
-                    </span>
-                    <span class = "text">
-                        For the first time ever, we will be hosting an online intra 
-                        and inter-school event with 8 events, open to students
-                        of all ages.
-                    </span>
-                    <div class = "inputButtons">
-                        <a href="#" class="button">Register</a>
-                        <a href="#" class="button">Join Discord</a>
-                    </div>
-                </div>
-                <img src = "/images/big.png">
-            </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intra CW 2020</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+</head>
+<body>
+    <nav>
+        <span id = "navLogo" onclick="window.location = '#'">CW</span>
+        <ul class = "navLinks">
+            <li id = "cross"></li>
+            <li><a href = "#events">Events</a></li>      
+            <li><a href = "/techathlon">Techathlon</a></li>
+            <li><a href = "https://discord.gg/uG6pzB9" target="_blank">Discord</a></li>
+        </ul>
+        <div id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </body>
+    </nav>
+    <div class = "container">
+        <section class="main">
+            <div class="info">
+                <h1>Join the War.</h1>
+                <p>We're the Code Warriors, the computer club of DPS 
+                    Vasant Kunj. We're a team of technology addicts, and 
+                    our skills range from gaming to designing. </p>
+                <p> For the first time ever, we will be hosting an online intra 
+                    school event with 14 events, open to students
+                    of all ages.</p>
+                <div class="buttons"> 
+                    <a href="https://forms.gle/E1FpyfY1SrHKZUjM8" class="btn gay">Register</a>
+                    <a href="https://discord.gg/HXF4Yh8" class="btn">Join Discord</a>
+                </div>     
+            </div>
+
+            <div class="image">
+                <img src="/images/x.png" alt="">
+            </div>
+
+        </section>
+        <span class = "head">Events</span>
+        <div class = "underline"></div>
+        <section class="events" id = "events">    
+            <div class="ah">
+                <h3>Design</h3>
+                <p> Put your creativity to the test by designing functional and aesthetic products and digital artwork.</p>
+                <p> You will be required to complete a number of design tasks based on the prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1YBOoBhD_AM1sW1dZsqNq_r37jsYP8jdDD5CKdKcHToQ/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Web Development</h3>
+                <p> Code and build unique and functional websites and web-apps.</p>
+                <p> You will be required to make a website/web-app based on the creative prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1nPu8hJE2V_yg3ZcaNPq5epWA-lGBC2hRsP_5rRk8LZo/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Mobile Development</h3>
+                <p>Code and build unique and functional mobile applications for iOs, android or both. </p>
+                <p>You will be required to build an android, iOs, or hybrid application based on the creative prompt. </p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1EfOLjnSfy7hMziUhWO9HV-NqiQ9oEQotRmyyNIwACAM/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Motion Design</h3>
+                <p> Use your creativity in harmony with animation and editing skills to create engaging
+                    videos.</p>
+                    <p>Your task will be to create a short promo video based on the creative prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1-yZSmU8gf0zjaEVjii0awDXHzPpnhTHJP3Sp6qh73WA/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Filmmaking</h3>
+                <p>If it can be written or thought it can be filmed.</p>
+                <p>Your task will be to ideate a concept for a short film based on the prompt and shoot and edit it.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1wAAsRQlD1lBRySy76AAlWnZQIW_oscUOVErHoH6NY6o/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1XWi_9dV1t1yzFb6c1Hqf4rYCPCU0pFEDqAusY4G1cp4/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Game Development</h3>
+                <p>Design fun,interactive and engaging gaming experiences.</p>
+                <p>Your task will be to create a PC or mobile game based on the creative prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1n3j8u1iaksujfr9cNth-GRqT87waoqxnoCNov3tm-aQ/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>3D Design</h3>
+                <p>Craft lifelike and beautiful 3D representations of the real world.</p>
+                <p>Your task will be to create 3D model(s) based on the creative prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_rU86uvWQxQOaEQ-rRKERPf0Rz4xKhAf_X3ysuc-gQQ/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1Uvui60jWukbiXJ8pFG61EEYku9eW3A9eRiVtdxUPg4c/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Quiz</h3>
+                <p>Gruelling duel of wits and knowledge</p>
+                <p>The quiz prelims will be held on X at Xpm. Ten participants will qualify for the final round to be held on X at Xpm.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1_dK1vGENv_G31LG6Kl1rcm-qc9bo9tD4r-CiLRXHiiE/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Crossword</h3>
+                <p> Let's have some pun. </p>
+                <p>The crossword prelims will be held on X at Xpm. Ten participants will qualify for the final round to be held on X at Xpm.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/11EKrcsl_JK-_ndrkgkTEEgLflx1QNg3KuBv52RCDj_Y/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Idea Pitch</h3>
+                <p> Think Different </p>
+                <p> Your task will be to innovate and conceptualize a product which solves a real-world problem. You must come up with a feasible idea and explain its different aspects.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1S5DdxvAIIBj_qS0eQunDucv-9uhZGT8fOHAStADRW_g/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1DejiLH2_r6q8QplNOGUok_OKnQe9LxtNwQs9ENt8deI/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Audio Editing</h3>
+                <p> Test your sound creativity by making amazing beats and editing audio using a DAW of your choice.</p>
+                <p> You must complete and submit all three of the tasks given in the prompt.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/15cJMoF_pFZtOhIHPaMIhCkIyux2TznzSpCptvaOeo-M/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1BJdHca_qnhEG7FqF3X7KA_eEacuY7ZnjStyESAK8GPI/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Photography</h3>
+                <p> In photography there is a reality so subtle that it becomes more real than reality.</p>
+                <p> Your task will be to capture and tell a story through three photographs based on the given prompt.</p>
+                    
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1q4Ii3dfZ9vhcevw5iD6uVlLJMXHIdwKAx2UeUECFAww/edit?usp=sharing">Prompt<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/1HNSgPyeefUjaNhvEA1HmgIXyucEWXnOacJIRqkR986w/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Techathlon</h3>
+                <p>This is techathlon, the cryptic hunt of DPS Vasant 
+                    Kunj. Always remember, the answer is right there on 
+                    your screen but you may never find it.</p>
+                <p>Techathlon will be 48 hours long and begin on 28th June at 8:42 pm. </p>
+                    <div class="links">
+                        <a href="#">Play<i class="fas fa-chevron-right"></i></a>
+                        <a href="https://docs.google.com/document/d/16DuaeqYwreO055yUb03jOiw5hdL7m2jOWmYOONt1zV4/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Programming</h3>
+                <p> Cracking open a code one.</p>
+                <p> 00110000 01111000 00110010 01000001. </p>
+                <p> The competitive programming event will be hosted on the X platform, on Y at Zpm. Join the discord server for updates.</p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/1Bif0DINE-igV4YsXDGKpS0xq50ZPe1elh_njpP0azqs/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>           
+                    </div>
+            </div>
+            <div class="ah">
+                <h3>Group Discussion</h3>
+                <p> Where eloquent discourse meets technological aptitude.</p>
+                <p> The group discussion event will take place on X, on the Y at Zpm. </p>
+                    <div class="links">
+                        <a href="https://docs.google.com/document/d/16g2ho33FRnUSr-X7IU34Gca--UbCb6LdDm5hWzcns5g/edit?usp=sharing">Resources<i class="fas fa-chevron-right"></i></a>
+                        
+                    </div>
+            </div>
+        
+        </section>
+
+        <div class="vid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/qWwH7WmsEOk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer>
+        <p>Made with &lt;3 by Ujjwal Dimri and Ishaan Das.</p>
+        <a href="mailto:kevin@code-warriors.org.com"><p class="ujj">kevin@code-warriors.org</p></a>
+        <a href="https://www.facebook.com/codewarriors"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com/codewarriors42/"><i class="fab fa-instagram"></i></a>
+    </footer>
+    <script>
+        const burger = document.getElementById("hamburger");
+        const cross = document.getElementById("cross");
+        const nav = document.querySelector(".navLinks");
+        const navLinks = document.querySelectorAll(".navLinks li a");
+
+        burger.addEventListener("click",() => {
+
+            nav.classList.add("nav-active");
+            navLinks.forEach(function(link,index){
+                link.style.opacity = 0;
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index/12+0.1}s`;
+            });
+        });
+        cross.addEventListener("click",() => {
+            nav.classList.remove("nav-active");
+            navLinks.forEach(function(link,index){
+                link.style.animation = "";
+                link.style.opacity = 1;
+            });
+        });
+    </script>
+</body>
 </html>
