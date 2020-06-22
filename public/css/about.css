@@ -16,6 +16,16 @@
     box-sizing: border-box;
     line-height: 1.5;
 }
+::-webkit-scrollbar{
+    width:12px
+}
+
+::-webkit-scrollbar-track{
+    display: none;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #363636;;
+}
 html{
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -30,7 +40,7 @@ body {
 }
 .container{
     width:73vw;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 .hello {
     display: flex;
@@ -41,25 +51,28 @@ body {
 a {
     text-decoration: none;
 }
-.image img{
-    width: 80vw;
-    max-width: 600px;
+.hello{
+    display: flex;
+    justify-content: space-between;
 }
 .hello h1 {
-    padding-bottom: 30px;
+    margin-bottom: 18px;
     font-size: 2.5em;
 }
-.points span, .info span{
-    color: #3DB594;
-}
 .hello p {
-    padding-right: 50px;
-    padding-bottom: 30px;
     font-size: 1em;
-    line-height: 1.3;
+    margin:20px 0;
+    width: 70%;
+}
+.hello img{
+    width: 65%;
+    min-width: 420px;
 }
 .hello i {
     padding-left: 5px;
+}
+.points span, .info span{
+    color: #3DB594;
 }
 .hello a {
     display: inline-block;
@@ -75,23 +88,23 @@ a {
     transition: ease.5s;
 }
 .rules {
-    margin:50px 0;
+    margin:70px 0;
 }
 .head {
     color: #3DB594;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     font-size: 25px;
 }
 .head h1 {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 .bruh {
     background: #3DB594;
     width: 80px;
-    height: 3px;
+    height: 5px;
 }
 .rules li {
-    padding-bottom: 20px;
+    margin:15px 15px;
     font-size: 1.1em;
 }
 footer {
@@ -110,6 +123,31 @@ footer i {
     font-size: 20px;
     color: rgb(131, 131, 131);
 }
+
+@media only screen and (max-width: 1200px) {
+    .container{
+        width:75vw;
+        margin: 50px 0;
+    }
+    .hello{
+        flex-direction: column;
+    }
+    .hello img{
+        margin:30px 0;
+    }
+    .hello p{
+        width:75%
+    }
+}
+@media only screen and (max-width: 640px) {
+    .container{
+        width:85%;
+    }
+    .hello img{
+        display: none;
+    }
+}
+/*
 @media only screen and (max-width: 1400px) {
     .rules, .hello { 
         padding: 50px 50px;             
@@ -178,4 +216,4 @@ footer i {
     }
     .rules h1 {font-size: 30px;}
 }
-    
+*/  

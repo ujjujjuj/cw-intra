@@ -22,18 +22,24 @@ body {
     font-family: regular;
     background: #191919;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
     padding-bottom: 80px;
 }
 .container{
-    width: 100%;
+    width: 90vw;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-a {
+.container p{
+    text-align: center;
+}
+.container a {
     color: white;
     text-decoration: none;   
 }
@@ -50,7 +56,7 @@ a {
     background: #2f8f75;
     transition: .5s ease;
 }
-div {
+.container div {
     position: relative;
     text-align: center;
     top: -70%;

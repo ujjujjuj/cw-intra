@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play</title>
-    <link rel="stylesheet" href="/css/playBefore.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/playBefore.css">
 </head>
 <body>
     <nav>
@@ -27,7 +27,29 @@
     </nav>
     <div class = "container">
         <p>The hunt will start on the 28th of June at 8:42 pm.</p>
-        <a href="/" class="btn gay">Go back</a>
+        <a href="/techathlon" class="btn gay">Go back</a>
     </div>
+    <script>
+        const burger = document.getElementById("hamburger");
+        const cross = document.getElementById("cross");
+        const nav = document.querySelector(".navLinks");
+        const navLinks = document.querySelectorAll(".navLinks li a");
+
+        burger.addEventListener("click",() => {
+
+            nav.classList.add("nav-active");
+            navLinks.forEach(function(link,index){
+                link.style.opacity = 0;
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index/12+0.1}s`;
+            });
+        });
+        cross.addEventListener("click",() => {
+            nav.classList.remove("nav-active");
+            navLinks.forEach(function(link,index){
+                link.style.animation = "";
+                link.style.opacity = 1;
+            });
+        });
+    </script>
 </body>
 </html>
