@@ -106,7 +106,7 @@ a {
     height: 5px;
 }
 .rules li {
-    margin:15px 40px;
+    margin:15px 0;
     margin-right:30px;
     font-size: 1.1em;
 }
@@ -145,6 +145,7 @@ footer i {
 @media only screen and (max-width: 640px) {
     .container{
         width:85%;
+        margin-bottom: 30px;
     }
     .hello p{
         width:100%;
@@ -153,6 +154,9 @@ footer i {
         margin-top:70px;
         margin-bottom: 40px;
         width:100%
+    }
+    .rules li{
+        margin-left: 20px;
     }
     .hello img{
         min-width: 0;
