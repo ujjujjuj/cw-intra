@@ -26,6 +26,9 @@
 ::-webkit-scrollbar-thumb{
     background-color: #363636;;
 }
+html{
+    scroll-behavior: smooth;
+}
 body {
     font-family: regular;
     background: #191919;
