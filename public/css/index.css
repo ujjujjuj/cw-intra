@@ -16,9 +16,6 @@
     font-family: semibold;
     src: url(/fonts/SF-Semibold.ttf);
 }
-#navLogo{
-    color: #3DB594;
-}
 ::-webkit-scrollbar{
     width:12px
 }
@@ -38,7 +35,7 @@ body {
     align-items: center;
 }
 .container{
-    margin:120px 0;
+    margin:140px 0;
     margin-bottom: 40px;
     width:70vw;
     display: flex;
