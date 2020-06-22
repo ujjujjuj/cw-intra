@@ -147,8 +147,17 @@ footer i {
         width:85%;
         margin-bottom: 30px;
     }
+    .info{
+        max-width: 90%;
+    }
     .hello p{
         width:100%;
+    }
+    .hello h1{
+        font-size: 2.1em;
+    }
+    .hello h1.letters{
+        word-wrap: break-word;
     }
     .rules{
         margin-top:70px;
