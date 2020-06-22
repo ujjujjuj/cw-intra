@@ -90,6 +90,7 @@ a {
 .rules {
     margin:120px 0;
     margin-bottom: 40px;
+    width:70%
 }
 .head {
     color: #3DB594;
@@ -106,7 +107,7 @@ a {
 }
 .rules li {
     margin:15px 40px;
-    margin-right:20px;
+    margin-right:30px;
     font-size: 1.1em;
 }
 footer {
@@ -151,6 +152,7 @@ footer i {
     .rules{
         margin-top:70px;
         margin-bottom: 40px;
+        width:100%
     }
     .hello img{
         display: none;
