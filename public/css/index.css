@@ -208,7 +208,9 @@ footer i {
         grid-template-columns: repeat(1,1fr);
     }
     .main img{
-        display: none;
+        min-width: 0;
+        width:90%;
+        margin-top:40px
     }
 }
 

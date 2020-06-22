@@ -78,6 +78,12 @@
             const passErr = document.querySelector("#passwordDiv .error");
             const emailErr = document.querySelector("#emailDiv .error");
 
+            function validateEmail(email) 
+            {
+                var re = /\S+@\S+\.\S+/;
+                return re.test(email);
+            }
+
             function mouseDown(){
                 eye.src = "/images/eyeOpen.png";
                 passBox.type="text";
@@ -100,10 +106,8 @@
                     userBox.classList.add("errorInput");
                     return
                 }        
-                if(emailBox.value.length == 0){  
-                    console.log("a");
-                    emaiErr.innerHTML = "Please enter your email!";
-                    
+                if(!validateEmail(emailBox.value)){  
+                    emailErr.innerHTML = "Please enter a valid email address!";              
                     emailBox.classList.add("errorInput");
                     return
                 }
