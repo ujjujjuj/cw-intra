@@ -40,7 +40,7 @@ body {
 }
 .container{
     width:73vw;
-    margin-top: 80px;
+    margin-top: 120px;
 }
 .hello {
     display: flex;
@@ -88,7 +88,7 @@ a {
     transition: ease.5s;
 }
 .rules {
-    margin:70px 0;
+    margin:120px 0;
 }
 .head {
     color: #3DB594;
@@ -104,7 +104,7 @@ a {
     height: 5px;
 }
 .rules li {
-    margin:15px 15px;
+    margin:15px 25px;
     font-size: 1.1em;
 }
 footer {
@@ -127,7 +127,7 @@ footer i {
 @media only screen and (max-width: 1200px) {
     .container{
         width:75vw;
-        margin: 50px 0;
+        margin: 80px 0;
     }
     .hello{
         flex-direction: column;
@@ -142,6 +142,13 @@ footer i {
 @media only screen and (max-width: 640px) {
     .container{
         width:85%;
+    }
+    .hello p{
+        width:100%;
+    }
+    .rules{
+        margin-top:70px;
+        margin-bottom: 40px;
     }
     .hello img{
         display: none;
