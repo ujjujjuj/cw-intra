@@ -89,6 +89,7 @@ a {
 }
 .rules {
     margin:120px 0;
+    margin-bottom: 40px;
 }
 .head {
     color: #3DB594;
@@ -104,7 +105,8 @@ a {
     height: 5px;
 }
 .rules li {
-    margin:15px 25px;
+    margin:15px 40px;
+    margin-right:20px;
     font-size: 1.1em;
 }
 footer {

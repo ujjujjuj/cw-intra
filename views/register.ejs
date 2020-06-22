@@ -15,13 +15,17 @@
         <div class = "Container">
             <form action = "/techathlon/register" method="POST" id="form" autocomplete="off">
                 <span class = "head">Techathlon</span>
-                <input type="text" placeholder="Name" name="name" autocomplete="off">
+                <div id = "nameDiv">
+                    <input type="text" placeholder="Name" name="name" autocomplete="off">
+                    <span class = "error">&nbsp;</span>
+                </div>
                 <div id = "usernameDiv">
                     <% if(locals.error.includes("username")){%>   
                         <input type="text" class = "errorInput" placeholder="Username" name="username" autocomplete="off"><br>
                         <span class = "error">Username already exists!</span>
                     <%}else{%>
                         <input type="text" placeholder="Username" name="username" autocomplete="off">
+                        <span class = "error">&nbsp;</span>
                     <%} %>
                 </div>
                 <div id = "emailDiv">
@@ -30,15 +34,17 @@
                         <span class = "error">Email already exists!</span>
                     <%}else{%>
                         <input type="email" placeholder="Email" name="email" autocomplete="off">
+                        <span class = "error">&nbsp;</span>
                     <%} %>
                 </div>
                 <div id = "passwordDiv">
-                    <img src="/images/eyeClosed.png" id = "eye" onmousedown="mouseDown()" onmouseup="mouseUp()">
+                    <img src="/images/eyeClosed.png" id = "eye" onmousedown="mouseDown()" onmouseup="mouseUp()" ontouchstart = "mouseDown()" ontouchend="mouseUp()">
                     <% if(locals.error.includes("password")){%>
                         <input class = "errorInput" type="password" placeholder = "Password" name = "password" autocomplete="none"><br>
                         <span class = "error">Incorrect Password!</span>
                     <%}else{%>
                         <input type="password" placeholder = "Password" name = "password" autocomplete="none"> 
+                        <span class = "error">&nbsp;</span>
                     <%}%>
                 </div>
                 <span class = "text">Are you a student of DPS Vasant Kunj?</span>
@@ -62,40 +68,76 @@
             <img id = "banner" src = "/images/banda.png">
         </div>
         <script>
-
-            const x = document.getElementsByName("password")[0];
+            const nameBox = document.querySelector("#nameDiv input");
+            const userBox = document.querySelector("#usernameDiv input");
+            const passBox = document.querySelector("#passwordDiv input");
+            const emailBox = document.querySelector("#emailDiv input");
             const eye = document.getElementById("eye");
+            const nameErr = document.querySelector("#nameDiv .error");
+            const userErr = document.querySelector("#usernameDiv .error");
+            const passErr = document.querySelector("#passwordDiv .error");
+            const emailErr = document.querySelector("#emailDiv .error");
 
             function mouseDown(){
                 eye.src = "/images/eyeOpen.png";
-                x.type="text";
+                passBox.type="text";
             }
 
             function mouseUp(){
                 eye.src = "/images/eyeClosed.png";
-                x.type="password";
-                x.focus()
+                passBox.type="password";
+                passBox.focus()
             }
 
             function onSubmit(token) {
-                if(document.getElementsByName("name")[0].value.length == 0){
-                    alert("Please enter a name!");
+                if(nameBox.value.length == 0){
+                    nameErr.innerHTML = "Please enter your name!"
+                    nameBox.classList.add("errorInput");
                     return
                 }
-                if(document.getElementsByName("username")[0].value.length < 6){
-                    alert("Username should be greater than 6 characters!");
+                if(userBox.value.length < 4){
+                    userErr.innerHTML = "Username should be greater than 4 characters!"
+                    userBox.classList.add("errorInput");
+                    return
+                }        
+                if(emailBox.value.length == 0){  
+                    console.log("a");
+                    emaiErr.innerHTML = "Please enter your email!";
+                    
+                    emailBox.classList.add("errorInput");
                     return
                 }
-                if(document.getElementsByName("password")[0].value.length < 6){
-                    alert("Password should be greater than 6 characters!");
-                    return
-                }
-                if(document.getElementsByName("email")[0].value.length == 0){
-                    alert("Please enter an email address!");
+                if(passBox.value.length < 6){
+                    passErr.innerHTML = "Password length should be greater than 6 characters!"
+                    passBox.classList.add("errorInput");
                     return
                 }
                 document.getElementById("form").submit();
-            }                
+            }
+            nameBox.addEventListener("focus",() => {
+                if(nameBox.classList.contains("errorInput")){
+                    nameBox.classList.remove("errorInput");
+                    nameErr.innerHTML = "&nbsp;";
+                }
+            }); 
+            passBox.addEventListener("focus",() => {
+                if(passBox.classList.contains("errorInput")){
+                    passBox.classList.remove("errorInput");
+                    passErr.innerHTML = "&nbsp;";
+                }
+            });
+            userBox.addEventListener("focus",() => {
+                if(userBox.classList.contains("errorInput")){
+                    userBox.classList.remove("errorInput");
+                    userErr.innerHTML = "&nbsp;";
+                }
+            });
+            emailBox.addEventListener("focus",() => {
+                if(emailBox.classList.contains("errorInput")){
+                    emailBox.classList.remove("errorInput");
+                    emailErr.innerHTML = "&nbsp;";
+                }
+            });                
           </script>
     </body>
 </html>

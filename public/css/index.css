@@ -39,6 +39,7 @@ body {
 }
 .container{
     margin:120px 0;
+    margin-bottom: 40px;
     width:70vw;
     display: flex;
     flex-direction: column;

@@ -2,8 +2,7 @@ html{
     overflow-x: hidden;
 }
 nav{
-    width:100%;
-    padding:0 8vw 0 8vw;
+    width:84%;
     height:80px;
     display: flex;
     align-items: center;

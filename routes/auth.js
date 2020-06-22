@@ -27,11 +27,11 @@ router.post("/register",async (req,res) => {
         function (error, response, body) {
             if(error){
                 err = true;
-                return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+                return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
             }
             if(!JSON.parse(body).success){
                 err = "true"
-                return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+                return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
             }
         }
     );
@@ -55,7 +55,7 @@ router.post("/register",async (req,res) => {
     }
     let ip = req.ip
 
-    if(username.length < 4 || password.length <8){
+    if(username.length < 4 || password.length <6){
         return res.send("no");
     }
 
@@ -64,15 +64,15 @@ router.post("/register",async (req,res) => {
     const userExists = await User.findOne({username:req.body.username});
 
     if(userExists){
-		return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["username"]});
+		return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["username"]});
 	}
 	if(emailExists){
-		return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["password"]});
+		return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["email"]});
     }
     
     const ipAccounts = await User.find({ip:ip});
-    if(ipAccounts.length > 5){
-        return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+    if(ipAccounts.length > 10){
+        return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
 
     //pass hash+salt
