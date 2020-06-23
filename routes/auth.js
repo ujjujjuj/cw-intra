@@ -3,7 +3,7 @@ const User = require("../models/User.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require('path');
-const request = require('request');
+const axios = require('axios');
 
 //registration
 router.get("/register",(req,res) => {
@@ -21,22 +21,15 @@ router.post("/register",async (req,res) => {
     //recaptcha
     let respToken = req.body["g-recaptcha-response"];
     const secret_key = "6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj"
-    err = false;
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
-    request.post(url,function (error, response, body) {
-        console.log(body)
-        if(error){
-            err = true;
-            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-        }
-        if(!JSON.parse(body).success){
-            err = true;
-            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-        }
-        }
-    );
-    if(err){
-        return
+    let response = await axios.post(url)
+    .then((response) => {
+        return (response.data)
+    });
+    let succ = response.success;
+    if(!succ){
+        console.log("bot")
+        return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
 
     //instantiate variables
@@ -119,20 +112,14 @@ router.post("/login",async (req,res) => {
     const secret_key = "6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj"
     err = false;
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
-    request.post(url,function (error, response, body) {
-        console.log(body)
-        if(error){
-            err = true;
-            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-        }
-        if(!JSON.parse(body).success){
-            err = true;
-            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-        }
-        }
-    );
-    if(err){
-        return
+    let response = await axios.post(url)
+    .then((response) => {
+        return (response.data)
+    });
+    let succ = response.success;
+    if(!succ){
+        console.log("bot")
+        return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
 
     //instantiate variables
