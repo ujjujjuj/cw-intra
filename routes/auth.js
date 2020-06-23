@@ -19,20 +19,20 @@ router.get("/register",(req,res) => {
 router.post("/register",async (req,res) => {
 
     //recaptcha
-    err=false;
     let respToken = req.body["g-recaptcha-response"];
-    request.post(
-        'https://www.google.com/recaptcha/api/siteverify',
-        { formData: { secret: '6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj' ,response:respToken} },
-        function (error, response, body) {
-            if(error){
-                err = true;
-                return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
-            }
-            if(!JSON.parse(body).success){
-                err = "true"
-                return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
-            }
+    const secret_key = "6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj"
+    err = false;
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
+    request.post(url,function (error, response, body) {
+        console.log(body)
+        if(error){
+            err = true;
+            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+        }
+        if(!JSON.parse(body).success){
+            err = true;
+            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+        }
         }
     );
     if(err){
@@ -126,7 +126,7 @@ router.post("/login",async (req,res) => {
             return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
         }
         if(!JSON.parse(body).success){
-            err = "true"
+            err = true;
             return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
         }
         }
