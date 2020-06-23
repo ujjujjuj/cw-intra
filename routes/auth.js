@@ -120,8 +120,7 @@ router.post("/login",async (req,res) => {
     err = false;
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
     request.post(url,function (error, response, body) {
-        console.log(JSON.parse(response.body))
-        /*
+        console.log(body)
         if(error){
             err = true;
             return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
@@ -130,7 +129,6 @@ router.post("/login",async (req,res) => {
             err = "true"
             return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
         }
-        */
         }
     );
     if(err){
