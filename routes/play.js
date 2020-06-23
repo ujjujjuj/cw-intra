@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 const path = require('path');
 
-router.get("/play",(req,res) => {
+router.get("/play", (req,res) => {
     return res.sendFile(path.join(__dirname + '/../views/playBefore.html'));
 });
 /*

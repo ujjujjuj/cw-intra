@@ -116,19 +116,21 @@ router.post("/login",async (req,res) => {
     
     //recaptcha
     let respToken = req.body["g-recaptcha-response"];
+    const secret_key = "6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj"
     err = false;
-    request.post(
-        'https://www.google.com/recaptcha/api/siteverify',
-        { formData: { secret: '6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj' ,response:respToken} },
-        function (error, response, body) {
-            if(error){
-                err = true;
-                return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-            }
-            if(!JSON.parse(body).success){
-                err = "true"
-                return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
-            }
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
+    request.post(url,function (error, response, body) {
+        console.log(JSON.parse(response.body))
+        /*
+        if(error){
+            err = true;
+            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+        }
+        if(!JSON.parse(body).success){
+            err = "true"
+            return res.render(path.join(__dirname + '/../views/login.ejs'),{error:["auth"]});
+        }
+        */
         }
     );
     if(err){

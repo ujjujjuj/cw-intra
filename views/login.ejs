@@ -35,7 +35,10 @@
                         <span class = "error">&nbsp;</span>
                     <%}%>
                 </div>
+                
                 <button class="g-recaptcha" data-sitekey="6LdR_QAVAAAAAIn6C5h4kBI64Vgd_MXvhhMcLbQw" data-callback='onSubmit' data-action='submit' data-callback='onSubmit'>Login</button>
+                <!--<div class="g-recaptcha" data-sitekey="6LfvqKgZAAAAABJ5AEhjvEEEae6i6C10AZnJWO0M"></div>
+                <button type = "submit">Login</button>-->
                 <% if(locals.error.includes("auth")){%>   
                     <span class = "error">Please try again later</span>
                 <%} %>
