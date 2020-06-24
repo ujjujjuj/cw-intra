@@ -44,13 +44,10 @@ router.post("/register",limiter,async (req,res) => {
     let email = req.body.email;
     let password = req.body.password;
     let isVK;
-    let section;
     if(req.body.isVK == "Yes"){
         isVK = true;
-        section = req.body.section;
     }else{
         isVK = false;
-        section = "NA";
     }
     let ip = req.ip
 
@@ -67,11 +64,6 @@ router.post("/register",limiter,async (req,res) => {
 	}
 	if(emailExists){
 		return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["email"]});
-    }
-    
-    const ipAccounts = await User.find({ip:ip});
-    if(ipAccounts.length > 10){
-        return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
 
     //pass hash+salt
@@ -90,7 +82,7 @@ router.post("/register",limiter,async (req,res) => {
 
     //saving to db
 	try{
-		const savedUser = await user.save();
+        await user.save();
         const token = jwt.sign({_id:user._id},process.env.JWT_SECRET);
         res.cookie("auth",token,{maxAge:2*24*60*60*1000});
 		return res.redirect("/techathlon");
