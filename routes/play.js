@@ -32,6 +32,9 @@ router.get("/play",async (req,res) => {
         uid = authData;
     });
     const user = await User.findById(uid);
+    if(!user){
+        res.redirect("/techathlon/logout");
+    }
     if(user.isBanned){
         return res.send("banned");
     }

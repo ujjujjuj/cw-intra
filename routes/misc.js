@@ -18,6 +18,9 @@ router.get("/",async (req,res) => {
         uid = authData;
     });
     const user = await User.findOne({_id: uid});
+    if(!user){
+        res.redirect("/techathlon/logout");
+    }
     res.render(path.join(__dirname + '/../views/about.ejs'),{"username":user.username});
 });
 
