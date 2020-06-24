@@ -103,10 +103,11 @@
             });
 
         </script>
-    <% if(locals.extra.comment){ %>
-        <!--
-            <%= extra.comment %>
-        -->
-    <% } %>
     </body>
+<% if(locals.extra.comment){ %>
+<!--
+<% let comment = extra.comment %>
+<%- comment.replace("\\\\n", "\n") %>
+-->
+<% } %>
 </html>

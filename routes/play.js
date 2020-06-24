@@ -7,11 +7,12 @@ const crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 
 const path = require('path');
-
+/*
 router.get("/play", (req,res) => {
     return res.sendFile(path.join(__dirname + '/../views/playBefore.html'));
 });
-/*
+*/
+
 router.get("/play",async (req,res) => {
 
     //check if already logged in
@@ -34,7 +35,10 @@ router.get("/play",async (req,res) => {
     if(user.isBanned){
         return res.send("banned");
     }
-
+    //testing
+     if(user.username != process.env.ADMIN_USER){
+        return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+    }
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});
     return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
@@ -58,7 +62,11 @@ router.post("/play",async (req,res) => {
         uid = authData;
     });
     const user = await User.findOne({_id: uid});
-    
+
+    //testing
+    if(user.username != process.env.ADMIN_USER){
+        return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+    } 
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
     hashedAns = crypto.createHash('sha256').update(normalisedAns).digest('hex');
@@ -101,5 +109,5 @@ router.post("/play",async (req,res) => {
     res.redirect("/techathlon/play");
 
 });
-*/
+
 module.exports=router;

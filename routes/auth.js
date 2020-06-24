@@ -26,8 +26,7 @@ router.post("/register",async (req,res) => {
     .then((response) => {
         return (response.data)
     });
-    let succ = response.success;
-    if(!succ){
+    if(!response.success || response.score <= 0.5){
         console.log("bot")
         return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
@@ -116,8 +115,7 @@ router.post("/login",async (req,res) => {
     .then((response) => {
         return (response.data)
     });
-    let succ = response.success;
-    if(!succ){
+    if(!response.success || response.score <= 0.5){
         console.log("bot")
         return res.render(path.join(__dirname + '/../views/register.ejs'),{error:["auth"]});
     }
