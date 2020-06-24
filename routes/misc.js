@@ -13,7 +13,7 @@ router.get("/",async (req,res) => {
     token = req.cookies['auth'];
     jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
         if(err){
-			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
+			return res.redirect("/techathlon/logout");	
 		}
         uid = authData;
     });
