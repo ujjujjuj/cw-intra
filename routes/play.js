@@ -37,7 +37,7 @@ router.get("/play",async (req,res) => {
     }
     //testing
      if(user.username != process.env.ADMIN_USER){
-        return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+        return res.sendFile(path.join(__dirname + '/../views/playBefore.html'));
     }
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});

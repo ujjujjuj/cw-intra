@@ -4,6 +4,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require('path');
 const axios = require('axios');
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+    windowMs: 60 * 60 * 1000, 
+    max: 3,
+    message:"Too many accounts created from this ip. Please try again later"
+  });
 
 //registration
 router.get("/register",(req,res) => {
@@ -16,7 +23,7 @@ router.get("/register",(req,res) => {
     res.render(path.join(__dirname + '/../views/register.ejs'),{error:[]});
 });
 
-router.post("/register",async (req,res) => {
+router.post("/register",limiter,async (req,res) => {
 
     //recaptcha
     let respToken = req.body["g-recaptcha-response"];
