@@ -50,14 +50,13 @@
             <form action = "/techathlon/play" method="POST">
                 <% if(locals.error){ %>
                     <span class="error">Incorrect answer!</span>
-                    <input type="text" class = "errorInput" placeholder="Answer" name="answer" autocomplete="off" id = "answer">
+                    <input type="text" class = "ans errorInput" placeholder="Answer" name="answer" autocomplete="off" id = "answer">
                 <% } else { %>
                     <span class="error">&nbsp;</span>
-                    <input type="text" placeholder="Answer" name="answer" autocomplete="off">
+                    <input class = "ans" type="text" placeholder="Answer" name="answer" autocomplete="off">
                 <% } %>
                 <button onclick="answerSubmit()">Submit</button>
-            </form>
-            
+            </form>               
         </div>
         <script>
             const burger = document.getElementById("hamburger");
@@ -91,8 +90,9 @@
                     answerError.innerHTML = "Please enter an answer"
                     answerBox.classList.add("errorInput");
                     return
+                }else{
+                    document.getElementById("form").submit();
                 }
-                document.getElementById("form").submit();
             }
 
             answerBox.addEventListener("focus",() => {
@@ -107,7 +107,7 @@
 <% if(locals.extra.comment){ %>
 <!--
 <% let comment = extra.comment %>
-<%- comment.replace("\\\\n", "\n") %>
+<%- comment.replace(" \\n", "\n") %>
 -->
 <% } %>
 </html>
