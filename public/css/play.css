@@ -19,13 +19,14 @@
 }
 html{
     scroll-behavior: smooth;
-    height: 100%;
+    min-height: 100%;
 }
 body{
     background-color: #191919;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 ::-webkit-scrollbar{
     width:12px
@@ -37,6 +38,14 @@ body{
 ::-webkit-scrollbar-thumb{
     background-color: #363636;;
 }
+.root{
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .container{
     width:100%;
     max-width: 720px;
@@ -44,6 +53,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.container #title{
+    margin-bottom: 15px;
 }
 #title{
     color:#3DB594;
@@ -54,6 +66,7 @@ body{
     width: 100%;
     padding:30px 35px;
     margin:10px 0;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,7 +104,6 @@ form .error{
     border-radius: 1px;
     width: 100%;
     margin-top: 20px;
-    margin-bottom: 5px;
     padding: 0 15px 0 20px;
     font-size: 1.1em;
     outline: none;
