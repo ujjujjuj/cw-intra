@@ -17,12 +17,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-/*
-router.get("/play", (req,res) => {
-    return res.sendFile(path.join(__dirname + '/../views/playBefore.html'));
-});
-*/
-
 //level 6 (constellation)
 function level6(email){
     let mailOptions = {
@@ -130,7 +124,7 @@ router.get("/play/pong",async (req,res) => {
     return res.sendFile(path.join(__dirname + '/../views/pong.html'));
 });
 
-//LEVEL STUFF
+/***********************************LEVEL STUFF**********************************/
 router.get("/play",async (req,res) => {
 
     //check if already logged in
