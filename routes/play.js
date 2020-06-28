@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-//level 6 (constellation)
-function level6(email){
+//level 8 (constellation)
+function level8(email){
     let mailOptions = {
         from: "ujjujjdamru@gmail.com",
         to: email,
@@ -60,7 +60,7 @@ router.get("/play/cygnus",async (req,res) => {
     if(!user){
         res.redirect("/techathlon/logout");
     }
-    if(user.level != 6){
+    if(user.level != 8){
         return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
     return res.sendFile(path.resolve(__dirname + "/../public/images/cygnus.oh3doi.png"));
@@ -162,6 +162,11 @@ router.get("/play/pong",async (req,res) => {
     if(user.level != 7){
         return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
+    if(req.cookies["pong"]){
+        if(req.cookies["pong"] == "vedantaneogirandi"){
+            return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
+        }
+    }
     return res.sendFile(path.join(__dirname + '/../views/pong.html'));
 });
 
@@ -202,6 +207,16 @@ router.get("/play",async (req,res) => {
     //level trey
     if(user.level == 3){
         return res.redirect("/techathlon/play/level3")
+    }
+
+    //level 7(pong)
+    if(user.level == 7){
+        if(!req.cookies["pong"]){
+            return res.redirect("/techathlon/play/pong");
+        }
+        if(!(req.cookies["pong"] = "vedantaneogirandi")){
+            return res.redirect("/techathlon/play/pong");
+        }
     }
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});
@@ -289,8 +304,8 @@ router.post("/play",async (req,res) => {
     user.lastAnswer = new Date().getTime() + 1000*60*60*5.5;
 
     //email lvl
-    if(user.level == 6){
-        level6(user.email);
+    if(user.level == 8){
+        level8(user.email);
     } 
     await user.save();
 
