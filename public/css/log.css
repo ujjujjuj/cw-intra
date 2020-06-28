@@ -1,6 +1,6 @@
 @font-face {
     font-family: regular;
-    src: url(../fonts/SF-Regular.otf);
+    src: url(../fonts/SF-Regular.ttf);
 }
 
 * {
@@ -12,28 +12,33 @@ body{
     background-color: black;
     color:white;
     font-family: regular;
-    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 table{
-    width:100%;
+    width:90%;
     border-collapse: collapse;
 }
 table,th,td{
-    border: 0.5px solid white;
+    border: 1px solid #505050;
 }
 th,td{
     padding:10px;
 }
 th{
     color: yellow;
-    font-size: 2em;
     text-align: center;
     vertical-align:center;
+    word-wrap: break-word;
+    font-size: 2em;
 }
 td{
     text-align: center;
     vertical-align:center;
+    font-size: 1.2em;
+    word-wrap: break-word;
 }
 .Correct{
     color:lightgreen;

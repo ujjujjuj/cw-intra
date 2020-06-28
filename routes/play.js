@@ -192,6 +192,20 @@ router.post("/play",async (req,res) => {
     } 
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
+    if(normalisedAns.length > 45){
+        const log = new Log({
+            username:user.username,
+            level:user.level,
+            input:"long: "+normalisedAns.substring(0,20)+"...",
+            time:Date.now() + 1000*60*60*5.5,
+            status:"Incorrect"
+        });
+        await log.save();
+        //get level info and send error
+        const levelInfo = await Question.findOne({"level":user.level});
+        levelInfo.error = "ys";
+        return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo);
+    }
     hashedAns = crypto.createHash('sha256').update(normalisedAns).digest('hex');
 
     //get ans from db
@@ -205,6 +219,7 @@ router.post("/play",async (req,res) => {
             username:user.username,
             level:user.level,
             input:normalisedAns,
+            time:Date.now() + 1000*60*60*5.5,
             status:"Incorrect"
         });
         await log.save();
@@ -220,6 +235,7 @@ router.post("/play",async (req,res) => {
         username:user.username,
         level:user.level,
         input:normalisedAns,
+        time:Date.now() + 1000*60*60*5.5,
         status:"Correct"
     });
     await log.save();

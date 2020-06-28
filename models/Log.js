@@ -19,7 +19,7 @@ const logSchema = new mongoose.Schema({
     },
     time:{
         type:Date,
-        default:new Date().getTime() + 1000*60*60*5.5
+        required: true
     }
 });
 

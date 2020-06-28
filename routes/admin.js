@@ -7,7 +7,7 @@ const path = require('path');
 const jwt = require("jsonwebtoken");
 
 //All logs
-router.get("/logs/",async (req,res) => {
+router.get("/logs",async (req,res) => {
 
     if(req.cookies['auth']==null){
         return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
@@ -31,7 +31,11 @@ router.get("/logs/",async (req,res) => {
     }
 
     //get logs and order them
-    const logs = await Log.find({},null,{limit:100});
+    let lim = req.query.limit;
+    if(!lim){
+        lim = 100;
+    }
+    const logs = await Log.find({},null,{limit:parseInt(lim)}).sort({"_id":"desc"});
 
     out = []
     for(i=0;i<logs.length;i++){
@@ -73,7 +77,11 @@ router.get("/logs/:username",async (req,res) => {
     }
 
     //get logs and order them
-    const logs = await Log.find({username:req.params.username},null,{limit:100});
+    let lim = req.query.limit;
+    if(!lim){
+        lim = 100;
+    }
+    const logs = await Log.find({username:req.params.username},null,{limit:100}).sort({"_id":"desc"});;
 
     out = []
     for(i=0;i<logs.length;i++){
@@ -136,17 +144,5 @@ router.get("/info/:username", async (req,res) =>{
     });
 
 });
-/*
-router.get("/addanswer", async (req,res) =>{
 
-    const answer = new Answer({
-        level:0,
-        answer:"1ef128f5e74f227d60fd632d3574fe72618dbebfeb35266d84ffe58f0ea4f171",
-    });
-    const savedAns = await answer.save();
-
-    res.send("adding");
-
-});
-*/
 module.exports=router;
