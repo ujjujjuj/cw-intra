@@ -48,7 +48,7 @@
                     <% } %>
                 <% } %>
             </div>
-            <form action = "/techathlon/play" method="POST">
+            <form action = "/techathlon/play" method="POST"id = "form">
                 <% if(locals.error){ %>
                     <span class="error">Incorrect answer!</span>
                     <input type="text" class = "ans errorInput" placeholder="Answer" name="answer" autocomplete="off" id = "answer">
@@ -56,8 +56,8 @@
                     <span class="error">&nbsp;</span>
                     <input class = "ans" type="text" placeholder="Answer" name="answer" autocomplete="off" id = "answer">
                 <% } %>
-                <button onclick="answerSubmit()">Submit</button>
-            </form>               
+            </form>
+            <button onclick="answerSubmit()">Submit</button>            
         </div>
         </div>
         <script>
@@ -91,18 +91,28 @@
                 if(answerBox.value.length < 1){
                     answerError.innerHTML = "Please enter an answer"
                     answerBox.classList.add("errorInput");
-                    return
                 }else{
                     document.getElementById("form").submit();
                 }
             }
-
+            answerBox.addEventListener("input",() => {
+                let input = answerBox.value;
+                let output = ""
+                if(input.length > 0){
+                    for(let i = 0;i < input.length;i++){
+                        if(input.charAt(i) != " "){
+                            output += input.charAt(i).toLowerCase();
+                        }
+                    }
+                    answerBox.value = output;
+                }
+            });
             answerBox.addEventListener("focus",() => {
                 if(answerBox.classList.contains("errorInput")){
                     answerBox.classList.remove("errorInput");
                     answerError.innerHTML = "&nbsp;";
                 }
-            });
+            });     
 
         </script>
     </body>
