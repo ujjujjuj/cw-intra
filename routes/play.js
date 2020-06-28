@@ -95,14 +95,6 @@ router.get("/play/level3",async (req,res) => {
     if(user.level != 3){
         return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
     }
-    //testing
-    if(user.username != process.env.ADMIN_USER){
-        if(user.username != "duvylfy_luksq"){
-            if(user.username != "iamtesting"){
-                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
-            }   
-        }   
-    }
     //get level info
     const levelInfo = await Question.findOne({"level":3});
     return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
@@ -196,14 +188,6 @@ router.get("/play",async (req,res) => {
     if(user.isBanned){
         return res.send("banned");
     }
-    //testing
-    if(user.username != process.env.ADMIN_USER){
-        if(user.username != "duvylfy_luksq"){
-            if(user.username != "iamtesting"){
-                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
-            }   
-        }   
-    }
     //level trey
     if(user.level == 3){
         return res.redirect("/techathlon/play/level3")
@@ -242,14 +226,6 @@ router.post("/play",async (req,res) => {
     });
     const user = await User.findOne({_id: uid});
 
-    //testing
-    if(user.username != process.env.ADMIN_USER){
-        if(user.username != "duvylfy_luksq"){
-            if(user.username != "iamtesting"){
-                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
-            }
-        }   
-    } 
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
     if(normalisedAns.length > 45){
