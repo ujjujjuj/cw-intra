@@ -153,7 +153,9 @@ router.get("/play",async (req,res) => {
     //testing
     if(user.username != process.env.ADMIN_USER){
         if(user.username != "duvylfy_luksq"){
-            return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+            if(user.username != "iamtesting"){
+                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+            }   
         }   
     } 
     //get level info
@@ -183,7 +185,9 @@ router.post("/play",async (req,res) => {
     //testing
     if(user.username != process.env.ADMIN_USER){
         if(user.username != "duvylfy_luksq"){
-            return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+            if(user.username != "iamtesting"){
+                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+            }
         }   
     } 
     //normalise and hash user ans
