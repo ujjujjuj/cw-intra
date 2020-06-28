@@ -179,7 +179,7 @@ router.post("/play",async (req,res) => {
     const user = await User.findOne({_id: uid});
 
     //testing
-    if(user.username != process.env.ADMIN_USER || user.username != "duvylfy_luksq"){
+    if(user.username != process.env.ADMIN_USER && user.username != "duvylfy_luksq"){
         return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
     } 
     //normalise and hash user ans
