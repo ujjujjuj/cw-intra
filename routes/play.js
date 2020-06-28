@@ -12,15 +12,15 @@ const path = require('path');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL_EMAIL,
-      pass: process.env.GMAIL_PASSWORD
+      user: "ujjujjdamru@gmail.com",
+      pass: "ujjujjdamru12"
     }
 });
 
 //level 6 (constellation)
 function level6(email){
     let mailOptions = {
-        from: process.env.GMAIL_EMAIL,
+        from: "ujjujjdamru@gmail.com",
         to: email,
         subject: "Techathlon",
         text: 'congratulation',
@@ -67,6 +67,47 @@ router.get("/play/cygnus",async (req,res) => {
 });
 
 //level 3 (bill gates)
+router.get("/play/level3",async (req,res) => {
+
+    //check if already logged in
+    if(req.cookies['auth']==null){
+        return res.redirect("/techathlon/login");
+    };
+
+    //get user level
+    let token = req.cookies['auth'];
+    let uid;
+
+    //get id from jwt
+    jwt.verify(token,process.env.JWT_SECRET,(err,authData) => {
+        if(err){
+			return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));	
+		}
+        uid = authData;
+    });
+    const user = await User.findById(uid);
+    if(!user){
+        res.redirect("/techathlon/logout");
+    }
+    if(user.isBanned){
+        return res.send("banned");
+    }
+    if(user.level != 3){
+        return res.status(404).sendFile(path.join(__dirname + '/../views/404.html'));
+    }
+    //testing
+    if(user.username != process.env.ADMIN_USER){
+        if(user.username != "duvylfy_luksq"){
+            if(user.username != "iamtesting"){
+                return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
+            }   
+        }   
+    }
+    //get level info
+    const levelInfo = await Question.findOne({"level":3});
+    return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
+
+});
 router.get("/play/leveltrey",async (req,res) => {
 
     //check if already logged in
@@ -95,7 +136,7 @@ router.get("/play/leveltrey",async (req,res) => {
     return res.send("The Toast Derivation");
 });
 
-//ping pong level
+//ping pong level (7)
 router.get("/play/pong",async (req,res) => {
 
     //check if already logged in
@@ -157,7 +198,11 @@ router.get("/play",async (req,res) => {
                 return res.status(404).sendFile(path.join(__dirname + '/../views/playBefore.html'));
             }   
         }   
-    } 
+    }
+    //level trey
+    if(user.level == 3){
+        return res.redirect("/techathlon/play/level3")
+    }
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});
     return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
@@ -247,7 +292,7 @@ router.post("/play",async (req,res) => {
     if(user.level == 6){
         level6(user.email);
     } 
-    const savedUser = await user.save();
+    await user.save();
 
     res.redirect("/techathlon/play");
 
