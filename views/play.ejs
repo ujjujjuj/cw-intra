@@ -35,7 +35,7 @@
             <div id = "questionBox">
 
                 <% for(let i=0;i < text.length;i++){ %>
-                    <span style = <%= "order:" + text[i].order%>><%= text[i].content %></span>
+                    <span style = <%= "order:" + text[i].order%>><%- text[i].content %></span>
                 <% } %>
 
                 <% if(locals.extra.images){ %>
