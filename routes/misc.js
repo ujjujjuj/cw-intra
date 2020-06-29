@@ -49,7 +49,11 @@ router.get("/leaderboard", async (req,res) => {
         if(data[i].level==42){
             leaderboard.unshift({"rank":"hm","username":username,"level":42});
         }else{
-            leaderboard.push({"rank":cnt,"username":username,"level":data[i].level});
+            if(data[i].level==10){
+                leaderboard.push({"rank":cnt,"username":username,"level":"GG"});
+            }else{
+                leaderboard.push({"rank":cnt,"username":username,"level":data[i].level});
+            }          
             cnt += 1
         }
     } 

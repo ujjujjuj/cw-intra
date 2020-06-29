@@ -26,7 +26,7 @@ function level8(email){
         text: 'congratulation',
         attachments: [{
             filename: 'hmmmm.png',
-            path: __dirname +"/../public/images/lvl6num.ailfh13.png",
+            path: __dirname +"/../public/images/cygnum.sdfuiohfuo2.png",
             cid: 'num'
        }]
     };
@@ -198,10 +198,16 @@ router.get("/play",async (req,res) => {
         if(!req.cookies["pong"]){
             return res.redirect("/techathlon/play/pong");
         }
-        if(!(req.cookies["pong"] = "vedantaneogirandi")){
+        if(!(req.cookies["pong"] == "vedantaneogirandi")){
             return res.redirect("/techathlon/play/pong");
         }
     }
+
+    //win
+    if(user.level == 10){
+        return res.send("congratulation");
+    }
+
     //get level info
     const levelInfo = await Question.findOne({"level":user.level});
     return res.render(path.join(__dirname + '/../views/play.ejs'),levelInfo)
@@ -228,13 +234,13 @@ router.post("/play",async (req,res) => {
 
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
-    //for lvl0 quotes
+    //lvl0 quote fix
     normalisedAns = normalisedAns.replace("’","'");
     if(normalisedAns.length > 45){
         const log = new Log({
             username:user.username,
             level:user.level,
-            input:"long: "+normalisedAns.substring(0,20)+"...",
+            input:normalisedAns.substring(0,30)+"...",
             time:Date.now() + 1000*60*60*5.5,
             status:"Incorrect"
         });
