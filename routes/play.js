@@ -235,7 +235,7 @@ router.post("/play",async (req,res) => {
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
     //lvl0 quote fix
-    normalisedAns = normalisedAns.replace("’","'");
+    normalisedAns = normalisedAns.replace(/’/g,"'");
     if(normalisedAns.length > 45){
         const log = new Log({
             username:user.username,

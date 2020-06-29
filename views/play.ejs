@@ -128,7 +128,7 @@
 <!--
 
 <% let comment = extra.comment %>
-<%- comment.replace("\\n","\n") %>
+<%- comment.replace(/\\n/g,"\n") %>
 
 -->
 <% } %>
