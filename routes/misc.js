@@ -33,6 +33,11 @@ router.get("/leaderboard", async (req,res) => {
     leaderboard = []
     cnt = 1
     for(let i=0;i < data.length;i++){
+
+        //remove kevin
+        if(data[i].username == "Kevin"){
+            continue;
+        }
         
         //check if user is from VK
         let username;
