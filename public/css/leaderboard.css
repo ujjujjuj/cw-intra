@@ -64,6 +64,9 @@ td{
     font-size: 1.2em;
     margin:15px 0 15px 0;
 }
+table .win td{
+    color: #3DB594;
+}
 
 @media only screen and (max-width: 768px) {
     .Container{

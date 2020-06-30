@@ -6,13 +6,13 @@ const path = require('path');
 const axios = require('axios');
 const rateLimit = require("express-rate-limit");
 
+//rate limiter for registering accounts
 const limiter = rateLimit({
     windowMs: 60 * 60 * 1000, 
     max: 3,
     message:"Too many accounts created from this ip. Please try again later"
-  });
+});
 
-//registration
 router.get("/register",(req,res) => {
 
     //check if already logged in
@@ -107,7 +107,7 @@ router.post("/login",async (req,res) => {
     
     //recaptcha
     let respToken = req.body["g-recaptcha-response"];
-    const secret_key = "6LdR_QAVAAAAAJBZRSQwYxuAtXpc2B7sFvyeZsGj"
+    const secret_key = process.env.RECAPTCHA_SECRET
     err = false;
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${respToken}`;
     let response = await axios.post(url)

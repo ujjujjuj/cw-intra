@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require('nodemailer');
 const path = require('path');
 
-//set up mailer
+//nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-//level 8 (constellation)
+//level 8 (email+constellation)
 function level8(email){
     let mailOptions = {
         from: "ujjujjdamru@gmail.com",
@@ -66,7 +66,7 @@ router.get("/play/cygnus",async (req,res) => {
     return res.sendFile(path.resolve(__dirname + "/../public/images/cygnus.oh3doi.png"));
 });
 
-//level 3 (bill gates)
+//level 3 (trey)
 router.get("/play/level3",async (req,res) => {
 
     //check if already logged in
@@ -128,7 +128,7 @@ router.get("/play/leveltrey",async (req,res) => {
     return res.send("The Toast Derivation");
 });
 
-//ping pong level (7)
+//level 7 (pong)
 router.get("/play/pong",async (req,res) => {
 
     //check if already logged in
@@ -162,7 +162,7 @@ router.get("/play/pong",async (req,res) => {
     return res.sendFile(path.join(__dirname + '/../views/pong.html'));
 });
 
-/***********************************LEVEL STUFF**********************************/
+/***********************************LEVEL**********************************/
 router.get("/play",async (req,res) => {
 
     //check if already logged in
@@ -188,7 +188,7 @@ router.get("/play",async (req,res) => {
     if(user.isBanned){
         return res.send("banned");
     }
-    //level trey
+    //level 3(trey)
     if(user.level == 3){
         return res.redirect("/techathlon/play/level3")
     }
@@ -234,8 +234,7 @@ router.post("/play",async (req,res) => {
 
     //normalise and hash user ans
     let normalisedAns = req.body.answer.replace(/ /g,'').toLowerCase()
-    //lvl0 quote fix
-    normalisedAns = normalisedAns.replace(/’/g,"'");
+    normalisedAns = normalisedAns.replace(/’/g,"'"); //lvl0 quote fix
     if(normalisedAns.length > 45){
         const log = new Log({
             username:user.username,
@@ -292,7 +291,7 @@ router.post("/play",async (req,res) => {
         level8(user.email);
     } 
     await user.save();
-
+    
     res.redirect("/techathlon/play");
 
 });

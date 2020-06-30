@@ -25,6 +25,9 @@ router.get("/",async (req,res) => {
 });
 
 router.get("/leaderboard", async (req,res) => {
+
+    //dynamic leaderboard
+    /* 
     
     //querying data
     data = await User.find({},"username level isVK").sort({level:"descending",lastAnswer:"ascending"});
@@ -59,6 +62,10 @@ router.get("/leaderboard", async (req,res) => {
     } 
 
     res.render(path.join(__dirname + '/../views/leaderboard.ejs'),{"leaderboard":leaderboard});
+    */
+
+    //static leaderboard
+    res.sendFile(path.join(__dirname + '/../views/finalLeaderboard.html'));
 });
 
 module.exports=router;

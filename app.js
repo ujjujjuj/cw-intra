@@ -27,11 +27,9 @@ mongoose.connect(process.env.DB_URL,config,function(){
     console.log("Connected to db")
 });
     
-
-// *******ROUTES******
+// **********************ROUTES*********************
 
 // INTRA LANDING
-
 app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname + '/views/index.html'));
 });
@@ -42,7 +40,7 @@ app.get("/",(req,res) => {
 const authRoute = require("./routes/auth");
 app.use("/techathlon",authRoute);
 
-// --landing, rules, leaderboard--
+// --landing and leaderboard--
 const miscRoute = require("./routes/misc");
 app.use("/techathlon",miscRoute);
 
@@ -59,7 +57,7 @@ app.get('*', function(req, res){
     res.status(404).sendFile(path.join(__dirname + '/views/404.html'));
 });
 
-//server start
+//server init
 app.listen(port,() => {
     console.log("Listening on port "+port);
 });

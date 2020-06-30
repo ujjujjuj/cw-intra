@@ -33,11 +33,9 @@
         <div class="container">
             <span id = "title"><%= title %></span>
             <div id = "questionBox">
-
                 <% for(let i=0;i < text.length;i++){ %>
                     <span style = <%= "order:" + text[i].order%>><%- text[i].content %></span>
                 <% } %>
-
                 <% if(locals.extra.images){ %>
                     <% for(let i=0;i < extra.images.length;i++){ %>
                     <div class = "imageGrid" style = <%= "order:" + extra.images[i].order%>>
