@@ -12,15 +12,15 @@ const path = require('path');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: "ujjujjdamru@gmail.com",
-      pass: "ujjujjdamru12"
+      user: process.env.GMAIL_EMAIL,
+      pass: process.env.GMAIL_PASSWORD
     }
 });
 
 //level 8 (email+constellation)
 function level8(email){
     let mailOptions = {
-        from: "ujjujjdamru@gmail.com",
+        from: process.env.GMAIL_EMAIL,
         to: email,
         subject: "Techathlon",
         text: 'congratulation',
